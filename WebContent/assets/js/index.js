@@ -1,20 +1,26 @@
-var getJSON = function(url, callback) {
+// JSON Loading
+function loadJSON(path, success, error)
+{
     var xhr = new XMLHttpRequest();
-    xhr.open('GET', url, true);
-    xhr.responseType = 'json';
-    xhr.onload = function() {
-      var status = xhr.status;
-      if (status === 200) {
-        callback(null, xhr.response);
-      } else {
-        callback(status, xhr.response);
-      }
+    xhr.onreadystatechange = function()
+    {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200) {
+                if (success)
+                    success(JSON.parse(xhr.responseText));
+            } else {
+                if (error)
+                    error(xhr);
+            }
+        }
     };
+    xhr.open("GET", path, true);
     xhr.send();
-};
+}
+
 
 function login() {
-
+  //Store Data
 	ip=document.getElementById("ip").value;
 
 	port=document.getElementById("port").value;
@@ -23,6 +29,7 @@ function login() {
 
 	api=document.getElementById("api").value;
 
+	//Hide login form and show Movies
   var x = document.getElementById("login");
   if (x.style.display === "none") {
 		x.style.display = "block";
@@ -37,17 +44,29 @@ function login() {
 	  else {
 			y.style.display = "none";
 	}
-    jsonstart();
+    getid();
 }
 
-function jsonstart(){
-	getJSON('http://' + ip + ':' + 'port' + '/emby/Users/public',
-  function(err, data) {
-  if (err !== null) {
-    alert('Something went wrong: ' + err);
-  }
-	else {
-    console.log('Your query count: ' + data.query.count);
-  }
-});
+function getid(){
+	loadJSON('http://' + ip + ":" + port + "/emby/Users/Public",
+         function(data){
+					 id = data[0].Id; // At the moment the code can only check your Id in section 0
+					 getmovies();
+				 },
+         function(xhr) { console.error(xhr); }
+);
+}
+
+function getmovies(){
+	loadJSON('http://' + ip + ":" + port + "/emby/Users/" + id + "/Items?api_key=" + api + "&Recursive=true&IncludeItemTypes=Movie",
+         function(data){
+					 var i = 0;
+					 while (i < data.Items.length) {
+						 document.write("<a href=" + "http://" + ip + ":" + port + "/emby/Videos/" + data.Items[i].Id + "/stream.mp4>" + data.Items[i].Name + "</a>" + "<p>");
+						 i++;
+					 }
+					 movieslist = data.Items[0].Name;
+				 },
+         function(xhr) { console.error(xhr); }
+);
 }
