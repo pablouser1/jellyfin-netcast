@@ -1,3 +1,18 @@
+var getJSON = function(url, callback) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', url, true);
+    xhr.responseType = 'json';
+    xhr.onload = function() {
+      var status = xhr.status;
+      if (status === 200) {
+        callback(null, xhr.response);
+      } else {
+        callback(status, xhr.response);
+      }
+    };
+    xhr.send();
+};
+
 function login() {
 
 	ip=document.getElementById("ip").value;
@@ -7,6 +22,7 @@ function login() {
 	user=document.getElementById("user").value;
 
 	api=document.getElementById("api").value;
+
   var x = document.getElementById("login");
   if (x.style.display === "none") {
 		x.style.display = "block";
@@ -21,25 +37,17 @@ function login() {
 	  else {
 			y.style.display = "none";
 	}
-    movielist();
+    jsonstart();
 }
 
-function movielist(){
-	document.getElementById("insert").innerHTML = ip;
-	$.getJSON("http://" + ip + ":" + port + "/emby/Users/Public", function(getid) {
-
-	    //getid is the JSON string
-
-		id = getid[0].Id;
-
-		document.write(ip);
-
-		$.getJSON("http://" + ip + ":" + port + "/emby/Users/" + id + "/Items?api_key=" + api + "&Recursive=true&IncludeItemTypes=Movie", function(getmovies) {
-		    //getmovies is the JSON string
-				alert("WIP");
-		})
-
-
-
-	})
+function jsonstart(){
+	getJSON('http://' + ip + ':' + 'port' + '/emby/Users/public',
+  function(err, data) {
+  if (err !== null) {
+    alert('Something went wrong: ' + err);
+  }
+	else {
+    console.log('Your query count: ' + data.query.count);
+  }
+});
 }
