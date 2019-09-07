@@ -3,28 +3,32 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Jellyfin</title>
-<script src="assets/js/index.js"></script> 
-<link rel="stylesheet" type="text/css" href="assets/css/style.css"/> <!--Index.html CSS file-->
+<!--<script type="text/javascript" src="assets/js/jquery-3.4.1.min.js"></script> -->
+<script type="text/javascript" src="assets/js/index.js"></script>
+<link rel="stylesheet" href="assets/css/style.css"/> <!--Index.html CSS file-->
 
 <!--Virtual Keyboard-->
-<script id="mainVKScript"type="text/javascript" src="assets/jsLgVKeyboard/LgVKeyboard.js"></script>
+<script id="mainVKScript" type="text/javascript" src="assets/jsLgVKeyboard/LgVKeyboard.js"></script>
 <link type="text/css" rel="Stylesheet" href="assets/jsLgVKeyboard/LgVKeyboard.css"/>
 </head>
 <body>
 <div id="login">
-<label for="ip">IP Address:</label>
-<input type="text" name="ip" id="ip">
-<label for="port">Port:</label>
-<input type="text" name="port" id="port">
-<label for="user">User:</label>
-<input type="text" name="user" id="user">
-<label for="api">API Key:</label>
-<input type="text" name="api" id="api">
-<div id="lower">
-<input onclick="login()" type="button" value="Connect" id="next"/>
-<input type="button" value="About" id="about"/>
-<input type="button" value="Clear" id="clear"/>
-</div><!--/ lower-->
+  <label for="ip">IP Address:</label>
+  <input type="text" name="ip" id="ip">
+  <label for="port">Port:</label>
+  <input type="text" name="port" id="port">
+  <label for="user">User:</label>
+  <input type="text" name="user" id="user">
+  <label for="api">API Key:</label>
+  <input type="text" name="api" id="api">
+  <div id="lower">
+    <input onclick="login()" type="button" value="Connect" id="next"/>
+    <input type="button" value="About" id="about"/>
+    <input type="button" value="Clear" id="clear"/>
+  </div><!--/ lower-->
+</div>
+<div id="main" style="display:none">
+  <p id="insert"></p>
 </div>
 </body>
 </html>
