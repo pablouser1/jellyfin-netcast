@@ -29,26 +29,18 @@ function login() {
 
 	api=document.getElementById("api").value;
 
+	console.log("IP: " + ip + " Port: " + port + " User: " + user + " API: " + api);
+  whole_url= "http://" + ip + ":" + port
 	//Hide login form and show Movies
   var x = document.getElementById("login");
-  if (x.style.display === "none") {
-		x.style.display = "block";
-    }
-		else {
-      x.style.display = "none";
-    }
-    var y = document.getElementById("main");
-    if (y.style.display === "none") {
-	  y.style.display = "block";
-	  }
-	  else {
-			y.style.display = "none";
-	}
-    getid();
+	x.style.display = "none";
+  var y = document.getElementById("main");
+	y.style.display = "block";
+  getid();
 }
 
 function getid(){
-	loadJSON('http://' + ip + ":" + port + "/emby/Users/Public",
+	loadJSON(whole_url + "/emby/Users/Public",
          function(data){
 					 id = data[0].Id; // At the moment the code can only check your Id in section 0
 					 getmovies();
@@ -58,14 +50,15 @@ function getid(){
 }
 
 function getmovies(){
-	loadJSON('http://' + ip + ":" + port + "/emby/Users/" + id + "/Items?api_key=" + api + "&Recursive=true&IncludeItemTypes=Movie",
+	loadJSON(whole_url + "/emby/Users/" + id + "/Items?api_key=" + api + "&Recursive=true&IncludeItemTypes=Movie",
          function(data){
 					 var i = 0;
 					 while (i < data.Items.length) {
-						 document.write("<a href=" + "http://" + ip + ":" + port + "/emby/Videos/" + data.Items[i].Id + "/stream.mp4>" + data.Items[i].Name + "</a>" + "<p>");
+
+						 console.log(i + " " + data.Items[i].Name);
+						 document.getElementById('main').innerHTML +="<a href=" + whole_url + "/emby/Videos/" + data.Items[i].Id + "/stream.mp4><img src=" + whole_url + "/emby/Items/" + data.Items[i].Id + "/Images/Primary width=180 height=270>";
 						 i++;
 					 }
-					 movieslist = data.Items[0].Name;
 				 },
          function(xhr) { console.error(xhr); }
 );
