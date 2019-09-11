@@ -26,7 +26,21 @@
   </div><!--/ lower-->
 </div>
 <div id="main" class="main">
-  Hola!
-<div>
-</body>
+  <div class="row">
+    <div class="column">
+    <img id=movies_img src="assets/img/movies.jpg" width=360 height=202 onClick="main(this.id)">
+    <h5>Movies</h5>
+  </div>
+  <div class="column">
+    <img src="assets/img/tv.jpg" width=360 height=202 onClick="main(this.id)">
+  </div>
+  </div>
+</div>
+<div id="items" class="items">
+</div>
+<div id="player" class="player">
+  <video class="video-js">
+    <source src="assets/vid/example.mp4" type="video/mp4">
+  </video>
+</div>
 </html>
