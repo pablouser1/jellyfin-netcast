@@ -162,7 +162,7 @@
    #content{display:none;}
    #player{display:none;}
    #items{display:none;}
-   #played{display:none;}
+   #top{display:none;}
    /* Three image containers (use 25% for four, and 50% for two, etc) */
 .column {
  float: left;
