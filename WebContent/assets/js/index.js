@@ -113,7 +113,7 @@ function getmusic(){
            var i = 0;
            while (i < data.Items.length) {
              console.log(i + " " + data.Items[i].Name);
-             document.getElementById("items").innerHTML += "<a href='javascript:videoplayer(music.Items[" + i +"].Id)''>" + "<img src=" + whole_url + "/emby/Items/" + data.Items[i].Id + "/Images/Primary width=180 height=270>";
+             document.getElementById("items").innerHTML += "<a href='javascript:videoplayer(music.Items[" + i +"].Id)''>" + "<img src=" + whole_url + "/emby/Items/" + data.Items[i].Id + "/Images/Primary width=270 height=270>";
              i++;
            }
          },
@@ -124,4 +124,7 @@ function videoplayer(id_video){
   console.log(id_video);
   var x = document.getElementById("items");
   x.style.display = "none";
+  var y = document.getElementById("player");
+  y.style.display = "block";
+  // Tests --> document.getElementById('player').innerHTML = "<audio controls><source src='" + whole_url + "/emby/Audio/" + id_video +  "/stream.mp3 type='audio/mpeg'></audio>"
 }
