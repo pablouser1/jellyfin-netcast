@@ -13,11 +13,17 @@ function loadJSON(path, success, error) {
         }
     };
     xhr.open("GET", path, true);
+    xhr.setRequestHeader("X-Emby-Authorization", "asd");
     xhr.send();
 }
 
+//Show or hide div elements
+function show(id, value) {
+    document.getElementById(id).style.display = value ? 'block' : 'none';
+}
+
+//Login Form
 function login() {
-    //Store Data
     ip = document.getElementById("ip").value;
 
     port = document.getElementById("port").value;
@@ -28,11 +34,19 @@ function login() {
 
     console.log("IP: " + ip + " Port: " + port + " User: " + user + " API: " + api)
     whole_url = "http://" + ip + ":" + port
+
     //Get User's ID
     loadJSON(whole_url + "/emby/Users/Public",
         function(data) {
-            id = data[0].Id; // At the moment the code can only check your Id in section 0
-            console.log("Tu ID es: " + id);
+          var i = 0;
+          while (i < data.length) {
+              console.log(i + " " + data[i].Name);
+              if (data[i].Name === user){
+                id = data[i].Id;
+              }
+              i++;
+          }
+            console.log("Your user ID is: " + id);
         },
         function(xhr) {
             console.error(xhr);
@@ -40,28 +54,26 @@ function login() {
     );
 
     //Hide login form and show main menu and continue watching menus.
-    var x = document.getElementById("login");
-    x.style.display = "none";
-    var y = document.getElementById("content");
-    y.style.display = "block";
+    show('login', false);
+    show('content', true);
 }
 
 function back() {
     document.getElementById("items").innerHTML = "";
-    var x = document.getElementById("content");
-    x.style.display = "block";
-    var y = document.getElementById("items");
-    y.style.display = "none";
+    show('content', true);
+    show('items', false);
+    continuewatching();
 }
+function continuewatching() {
 
+}
 function content(clicked_id) {
     content_type = clicked_id;
-    var x = document.getElementById("content");
-    x.style.display = "none";
-    var y = document.getElementById("items");
-    y.style.display = "block";
-    var z = document.getElementById("top");
-    z.style.display = "block";
+
+    show('content', false);
+    show('items', true);
+    show('top', true);
+
     console.log("Button clicked: " + clicked_id);
     if (clicked_id === "movies_img") {
         getmovies();
@@ -127,10 +139,8 @@ function getmusic() {
 
 function videoplayer(id_item) {
     console.log(id_item);
-    var x = document.getElementById("items");
-    x.style.display = "none";
-    var y = document.getElementById("playerLayout");
-    y.style.display = "block";
+    show('items', false);
+    show('playerLayout', true);
     //*****************************************************************************
     //	 LCD TV LABORATORY, LG ELECTRONICS INC., SEOUL, KOREA
     //	 Copyright(c) 2010 by LG Electronics Inc.
