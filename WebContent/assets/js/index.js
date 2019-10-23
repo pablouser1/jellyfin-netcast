@@ -13,7 +13,6 @@ function loadJSON(path, success, error) {
         }
     };
     xhr.open("GET", path, true);
-    xhr.setRequestHeader("X-Emby-Authorization", "asd");
     xhr.send();
 }
 
@@ -22,50 +21,57 @@ function show(id, value) {
     document.getElementById(id).style.display = value ? 'block' : 'none';
 }
 
-//Login Form
-function login() {
-    ip = document.getElementById("ip").value;
+function login(){
+  ip = document.getElementById("ip").value;
 
-    port = document.getElementById("port").value;
+  port = document.getElementById("port").value;
 
-    user = document.getElementById("user").value;
+  whole_url = "http://" + ip + ":" + port
+  show ('login', false);
+  show ('users', true);
+  loadJSON(whole_url + "/emby/Users/Public",
+    function(data) {
+      var i = 0;
+      while (i < data.length) {
+          console.log(i + " " + data[i].Name);
+          document.getElementById("users").innerHTML = "<a href='javascript:user(" + '"'  + data[i].Name + '"' + ");'>" + "<img src=assets/images/menus/user_icon.png width='152' height='152' id=" + data[i].Name + "</a>";
+          i++;
+      }
+    },
+    function(xhr) {
+        console.error(xhr);
+        show('login', true);
+        show('users', false);
+        alert("There was an error trying to connect to the server");
+    }
+);
+}
 
-    api = document.getElementById("api").value;
-
-    console.log("IP: " + ip + " Port: " + port + " User: " + user + " API: " + api)
-    whole_url = "http://" + ip + ":" + port
-
-    //Get User's ID
-    loadJSON(whole_url + "/emby/Users/Public",
-        function(data) {
-          var i = 0;
-          while (i < data.length) {
-              console.log(i + " " + data[i].Name);
-              if (data[i].Name === user){
-                id = data[i].Id;
-              }
-              i++;
-          }
-            console.log("Your user ID is: " + id);
-        },
-        function(xhr) {
-            console.error(xhr);
+function user(user){
+  console.log(user);
+  //Get User's ID
+  loadJSON(whole_url + "/emby/Users/Public",
+      function(data) {
+        var i = 0;
+        while (i < data.length) {
+            console.log(i + " " + data[i].Name);
+            if (data[i].Name === user){
+              id = data[i].Id;
+            }
+            i++;
         }
-    );
+          console.log("Your user ID is: " + id);
+          show('users', false);
+          show('passwd', true);
+      },
+      function(xhr) {
+          console.error(xhr);
+      }
+  );
 
-    //Hide login form and show main menu and continue watching menus.
-    show('login', false);
-    show('content', true);
 }
-
-function back() {
-    document.getElementById("items").innerHTML = "";
-    show('content', true);
-    show('items', false);
-    continuewatching();
-}
-function continuewatching() {
-
+function passwd(){
+  console.log("Test");
 }
 function content(clicked_id) {
     content_type = clicked_id;
@@ -141,6 +147,7 @@ function videoplayer(id_item) {
     console.log(id_item);
     show('items', false);
     show('playerLayout', true);
+
     //*****************************************************************************
     //	 LCD TV LABORATORY, LG ELECTRONICS INC., SEOUL, KOREA
     //	 Copyright(c) 2010 by LG Electronics Inc.
@@ -152,7 +159,6 @@ function videoplayer(id_item) {
     //	 Following functions are for NetCast Test Suite.
     //
     //*****************************************************************************
-
     var allMenuObject;
     var cntIndex = 1;
     var allExitObject;

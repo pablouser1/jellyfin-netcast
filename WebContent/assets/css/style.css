@@ -11,10 +11,10 @@ body {
     background: #2a2a2e;
 }
 
-#login {
+#login, #passwd {
     position: fixed;
     width: 340px;
-    height: 460px;
+    height: 280px;
     top: 50%;
     left: 50%;
     margin-top: -140px;
@@ -39,6 +39,21 @@ body {
     animation-iteration-count: 1;
     animation-timing-function: linear;
     border-radius: 25px;
+    font-size: 14px;
+    color: black
+}
+
+#users {
+  position: fixed;
+  width: 340px;
+  height: 280px;
+  top: 50%;
+  left: 50%;
+  margin-top: -140px;
+  margin-left: -170px;
+  display: none;
+  text-align: center;
+  color: white;
 }
 
 label {
@@ -70,7 +85,7 @@ input[type=port] {
     transition: all .4s ease;
 }
 
-#lower {
+#lower_login, #lower_passwd {
     background: #FAEBD7;
     width: 100%;
     height: 69px;
@@ -142,6 +157,10 @@ input[type=button]:active {
     display: none;
 }
 
+#passwd {
+  display: none;
+}
+
 /* Three image containers (use 25% for four, and 50% for two, etc) */
 .column {
     float: left;
@@ -164,5 +183,3 @@ input[type=button]:active {
 }
 
 .playerLayout { position: relative; z-index:10; opacity: 1; filter: alpha(opacity =100); }
-body { height: 100%; }
-html { height: 100%; }

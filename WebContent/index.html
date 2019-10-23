@@ -4,12 +4,12 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Jellyfin</title>
-    <link rel="stylesheet" href="assets/css/player.css" />
-    <script src="assets/js/jquery-1.8.2.min.js"></script>
-    <script src="assets/js/keycode.js"></script>
-    <script src="assets/js/jquery-ui.js"></script>
-    <script src="assets/js/index.js"></script>
-    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/player.css">
+    <script src="assets/js/jquery-1.8.2.min.js" type="text/javascript"></script>
+    <script src="assets/js/keycode.js" type="text/javascript"></script>
+    <script src="assets/js/jquery-ui.js" type="text/javascript"></script>
+    <script src="assets/js/index.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="assets/css/style.css">
     <!--Index.html CSS file-->
 
     <!--Virtual Keyboard-->
@@ -24,19 +24,24 @@
         <input type="text" name="ip" id="ip">
         <label for="port">Port:</label>
         <input type="text" name="port" id="port">
-        <label for="user">User:</label>
-        <input type="text" name="user" id="user">
-        <label for="api">API Key:</label>
-        <input type="text" name="api" id="api">
-        <div id="lower">
-            <input onclick="login();" type="button" value="Connect" id="next" />
-            <input onclick="about();" type="button" value="About" id="about_button" />
+        <div id="lower_login">
+            <input onclick="login();" type="button" value="Connect" id="next"/>
+            <input onclick="about();" type="button" value="About" id="about_button"/>
+            Reverse proxy <input type="checkbox" id="proxy">
         </div>
         <!--/ lower-->
     </div>
     <div id="top" class="top">
         <button onclick="back();">Back</button>
     </div>
+    <div id="users"></div>
+    <div id="passwd">
+      <label for="password">Password:</label>
+      <input type="text" name="password" id="password">
+      <div id="lower_passwd">
+        <input onclick="passwd();" type="button" value="Connect" id="passwd_button"/>
+      </div>
+  </div>
     <!-- Main menu -->
     <div id="content" class="content">
         <div class="row">
@@ -56,10 +61,9 @@
     </div>
     <!-- TV/Movies/Music items -->
     <div id="items" class="items"></div>
-    <!-- Video player -->
 
+    <!-- Video player -->
     <div id="playerLayout" class="playerLayout">
-        <!--Example of media object in HTML-->
         <div id="videoHolder">
             <object type="application/x-netcast-av" id="video">
             </object>
@@ -100,5 +104,6 @@
             <div class="exitKey"></div>
         </div>
     </div>
+</body>
 
 </html>
