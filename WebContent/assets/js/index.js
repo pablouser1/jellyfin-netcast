@@ -104,7 +104,7 @@ function passwd(){
   text = 'Emby UserId="'+ id + '", Client="Netcast", Device="' + modelName + '", DeviceId="' + serialNumber + '", Version="1.0.0.0", Token="' + token + '"';
   loadJSON(whole_url + "/emby/Users/authenticatebyname", "POST", "false",
       function(data) {
-        AccessToken = data.AccessToken;
+        AccessToken =  '"' + data.AccessToken + '"';
         console.log("Your access token is:" + AccessToken);
         show ('passwd', 'false');
         show ('content', 'true');
@@ -188,6 +188,5 @@ function getmusic() {
 function videoplayer(id_item) {
     console.log(id_item);
     show('items', false);
-    show('playerLayout', true);
-
+    alert("Not finished yet");
 }
