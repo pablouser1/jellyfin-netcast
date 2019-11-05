@@ -1,0 +1,257 @@
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	-webkit-user-select: none;
+	overflow:hidden;
+}
+
+ul, ol, li {
+list-style: none;
+}
+
+.container img,ol, ul, li,div{
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	vertical-align: baseline;
+	-webkit-user-select: none;
+}
+
+#lgVid_control
+{
+	height:30%;	
+	width:97.4%;
+	border:#BBB 1px solid;
+}
+#option
+{
+	display:none;
+}
+.ctrlButtonNormal{
+	width:20%;
+	height:100%;
+	position:relative;
+	float:left;
+	text-align:center;
+	background: url(../images/btn_bg/btn_nor_line_right.png) left no-repeat,url(../images/btn_bg/btn_nor_center.png) center repeat-x; 
+}
+.ctrlButtonNormalLeft{
+	width:20%;
+	height:100%;
+	position:relative;
+	float:left;
+	text-align:center;
+	background:url(../images/btn_bg/btn_nor_center.png) center repeat-x; 
+}
+.ctrlButtonNormal img{
+	display:block;
+}
+
+.ctrlButtonHover{
+	background:url(../images/btn_bg/btn_focus_line_right.png) left no-repeat,url(../images/btn_bg/btn_focus_center.png) center repeat-x;  
+}
+
+.arrowLeftNormal {
+	position:absolute;
+	width:38px;
+	height:51px;
+	z-index:5;
+	left: 2px;
+	top: 305px;
+	background:url(../images/player_btn_icon/icon_left_N.png) center no-repeat;
+	}
+.arrowLefthover{
+	background-image:url(../images/player_btn_icon/icon_left_F.png);
+	}
+.arrowRightNormal {
+	position:absolute;
+	width:38px;
+	height:51px;
+	z-index:6;
+	left: 1136px;
+	top: 305px;
+	background:url(../images/player_btn_icon/icon_right_N.png) center no-repeat;
+	}
+	
+
+.arrowRighthover{
+	background-image:url(../images/player_btn_icon/icon_right_F.png);
+	}
+/*---------------------------------------*/	
+.bottomControlBtn{
+
+	width:100%;
+	height:100%;
+	margin:auto;
+	background-position:center;
+}
+.playBtn{
+	margin-top:4%;
+	height:70%;
+	}
+.stopBtn{
+	margin-top:4%;
+	height:70%;
+}
+.forwardBtn{
+	margin-top:4%;
+	height:70%;
+}
+.rewindBtn{
+	margin-top:4%;
+	height:70%;
+}
+.switchToFullScreenModeBtn{
+	margin-top:4%;
+	height:70%;
+}
+.optionBtn{
+	margin-top:4%;
+	height:70%;
+}
+
+
+
+
+/******************* Control buttons of movie player *************************/
+
+.playerBottom
+{
+	width:99%;
+	height:24%;
+	background:url(../images/player_playerbg.png) center no-repeat;
+	background-size:contain;
+	
+}
+
+.playerButtonLayout
+{
+	height:90.5%;
+}
+
+
+/************ CSS for progress bar ************/
+.progressBallInitial
+{
+/*	top:9%;*/
+	top:40%;
+	width:71px;
+	height:44px;
+	background:url(../images/movie_progress_ball_n_afterimage.png) no-repeat;
+	background-size:contain;
+	position:absolute;
+	max-width:71px;
+	max-height:44px;
+}
+.progressBall
+{
+	top:40%;
+	left:5px;
+	width:71px;
+	height:44px;
+	background:url(../images/movie_progress_ball_n.png) no-repeat;
+	background-size:contain;
+	position:absolute; 
+	max-width:71px;
+	max-height:44px;
+}
+.progressBallHover
+{
+	top:30%;
+	left:-1%;
+	width:104px;
+	height:60px;
+	background:url(../images/movie_progress_ball_f.png) no-repeat;
+	position:absolute;
+	background-size:contain;
+	max-width:104px;
+	max-height:60px;
+}
+#ballCoverage
+{
+	bottom:90%;
+	left:0px;
+	height:40%;
+	width:85%;
+	position:relative;
+}
+
+.progressBarLayout
+{
+	/*height:52.2%;*/
+	height:70%;
+	width:97.5%;
+}
+
+.progressBar
+{
+	/*height:43px;
+*/}
+.progress
+{
+	
+	float:left;
+	
+}
+.progressBg
+{
+	width:75%;
+	background:url(../images/movie_progress_bar_bg.png) repeat-x;
+	
+}
+.progressBuffer
+{	
+	position:absolute;
+	background:url(../images/movie_progress_bar_buffer.png) repeat-x;
+}
+.progressBarStatus
+{
+    position:absolute;
+	background:url(../images/movie_progress_bar.png) repeat-x;
+}
+.progressBarClick
+{
+	position:absolute;
+	z-index:100;
+}
+
+/*******  CSS for running video information***********/
+.runningTime
+{
+	top:0px;
+}
+#remainingTime
+{
+	color:rgb(203,0,72);
+}
+#totalTime
+{
+	color:rgb(88,88,88);
+}
+.runningMovieInfo
+{
+	
+}
+.runningMovieName
+{
+  width:75%;
+  height:100%;
+  float:left;
+  color:rgb(225,225,225);
+  text-align:left;
+
+}
+.runningMovieType
+{
+	width:20%;
+	height:100%;
+	float:right;
+	color:rgb(59,59,59);
+	text-align:right;
+	margin-right:20px;
+}
