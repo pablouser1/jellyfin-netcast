@@ -4,65 +4,72 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Jellyfin</title>
-    <script src="assets/js/index.js" type="text/javascript"></script>
-    <link rel="stylesheet" href="assets/css/style.css">
-    <!--Index.html CSS file-->
-
+    <link rel="stylesheet" href="assets/css/index.css">
     <!--Virtual Keyboard-->
     <script id="mainVKScript" type="text/javascript" src="assets/jsLgVKeyboard/LgVKeyboard.js"></script>
     <link type="text/css" rel="Stylesheet" href="assets/jsLgVKeyboard/LgVKeyboard.css" />
+    <script language="javaScript" type="text/javascript" src="$$LGWAFLibrary/lib/jquery-1.7.min.js"></script>
+    <script language="javaScript" type="text/javascript" src="$$LGWAFLibrary/$LGE_WebAppFramework-min.js"></script>
+    <link rel="stylesheet" type="text/css" href="$$LGWAFLibrary/$LGE_WebAppFramework-min.css" />
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var app = new LGE.initialize();
+            $("#splash").hide();
+        });
+    </script>
+    <script src="assets/VideoPlayer/api/api.js" type="text/javascript"></script>
+    <script src="assets/VideoPlayer/util/keycode.js" type="text/javascript"></script>
+    <script src="assets/js/index.js" type="text/javascript"></script>
 </head>
 
 <body>
+  <!-- Welcome logo -->
+    <div id="splash">
+        <img id="splash_img" src="assets/images/menus/splashscreen.png" width=1920 height=1080>
+    </div>
+
+    <!-- Loading icon -->
+    <div id="loading">
+        <img id="loading_img" src="assets/images/menus/loading.svg" width=64 height=64>
+    </div>
+
     <!-- Netcast info -->
-    <object type="application/x-netcast-info"
-      id="device"
-      width="0"
-      height="0">
-    </object>
+    <object type="application/x-netcast-info" id="device" width="0" height="0"></object>
+    <div id="top" class="top">
+        <input onclick="back();" type="button" lge-type="Button" value="Back" style="width: 65px;" />
+    </div>
     <!-- Login form-->
     <div id="login">
         <label for="ip">IP Address:</label>
-        <input type="text" name="ip" id="ip">
+        <input type="text" id="ip">
         <label for="port">Port:</label>
-        <input type="text" name="port" id="port">
+        <input type="text" id="port">
         <div id="lower_login">
-            <input onclick="login();" type="button" value="Connect" id="next"/>
-            <input onclick="about();" type="button" value="About" id="about_button"/>
-            Reverse proxy <input type="checkbox" id="proxy">
+            <input onclick="login();" type="button" lge-type="Button" value="Connect" id="next" />
+            <input onclick="javascript:window.location.href = 'about.html';" type="button" lge-type="Button" value="About" id="about" />
+            <input onclick="javascript:window.location.href = 'debug.html';" type="button" lge-type="Button" value="Debug Info" id="debug" />
         </div>
-        <!--/ lower-->
-    </div>
-    <div id="top" class="top">
-        <button onclick="back();">Back</button>
     </div>
     <div id="users"></div>
-    <div id="passwd">
-      <label for="password">Password:</label>
-      <input type="text" name="password" id="password">
-      <div id="lower_passwd">
-        <input onclick="passwd();" type="button" value="Connect" id="passwd_button"/>
-      </div>
-  </div>
-    <!-- Main menu -->
-    <div id="content" class="content">
-        <div class="row">
-            <div class="column">
-                <img id=movies_img src="assets/images/menus/movies.jpg" width=360 height=202 onClick="content(this.id);">
-                <h5>Movies</h5>
-            </div>
-            <div class="column">
-                <img id=tv_img src="assets/images/menus/tv.jpg" width=360 height=202 onClick="content(this.id);">
-                <h5>TV Shows</h5>
-            </div>
-            <div class="column">
-                <img id=music_img src="assets/images/menus/music.jpg" width=360 height=202 onClick="content(this.id);">
-                <h5>Music</h5>
-            </div>
+    <div id="password">
+        <label for="password">Password:</label>
+        <input type="password" id="password_input">
+        <div id="password_lower">
+            <input onclick="password();" type="button" lge-type="Button" value="Connect" id="password_button" />
         </div>
     </div>
+    <!-- Main menu -->
+    <table id="content">
+      <tr>
+        <td style="padding:0 30px 0 30px;"><img id=movies_img src="assets/images/menus/movies.jpg" width=360 height=202 onClick="content(this.id);"><h5>Movies</h5></td>
+        <td style="padding:0 30px 0 30px;"><img id=tv_img src="assets/images/menus/tv.jpg" width=360 height=202 onClick="content(this.id);"><h5>TV Shows</h5></td>
+        <td style="padding:0 30px 0 30px;"><img id=music_img src="assets/images/menus/music.jpg" width=360 height=202 onClick="content(this.id);"><h5>Music</h5></td>
+      </tr>
+    </table>
     <!-- TV/Movies/Music items -->
     <div id="items" class="items"></div>
+    <div id="videoplayer"></div>
+
 </body>
 
 </html>
