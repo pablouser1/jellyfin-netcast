@@ -1,0 +1,76 @@
+@CHARSET "UTF-8";
+
+/*Body background*/
+html, body {
+  width: 100%;
+  height: 100%;
+  color: white;
+  -webkit-font-smoothing: antialiased;
+  background: #101010;
+}
+
+/*Login and password form*/
+#login, #password {
+  position: fixed;
+  width: 340px;
+  height: 280px;
+  top: 50%;
+  left: 50%;
+  margin-top: -140px;
+  margin-left: -170px;
+  background: #2a2a2e;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+  border-radius: 25px;
+  font-size: 14px;
+  color: black;
+}
+
+label {
+  color: #555;
+  display: inline-block;
+  margin-left: 18px;
+  padding-top: 10px;
+  font-size: 14px;
+}
+
+input[type=text], input[type=password] {
+  color: #777;
+  padding-left: 10px;
+  margin: 10px;
+  margin-top: 12px;
+  margin-left: 18px;
+  width: 290px;
+  height: 35px;
+  -webkit-transition: all .4s ease;
+  -moz-transition: all .4s ease;
+  transition: all .4s ease;
+}
+
+#lower_login, #lower_passwd {
+  background: #2a2a2e;
+  width: 100%;
+  height: 69px;
+  margin-top: 20px;
+  box-shadow: inset 0 1px 1px #fff;
+  border-top: 1px solid #ccc;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+#users {
+  display: none;
+  position: fixed;
+  width: 340px;
+  height: 280px;
+  top: 50%;
+  left: 50%;
+  margin-top: -140px;
+  margin-left: -170px;
+  text-align: center;
+  color: white;
+}
+
+#items, #content, #password, #loading, #videoplayer {
+  display: none;
+}
