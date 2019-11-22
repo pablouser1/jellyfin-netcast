@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Jellyfin</title>
+  <!--Virtual Keyboard-->
+  <script id="mainVKScript" type="text/javascript" src="assets/jsLgVKeyboard/LgVKeyboard.js"></script>
+  <link type="text/css" rel="Stylesheet" href="assets/jsLgVKeyboard/LgVKeyboard.css" />
+
+  <!--Styles-->
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/login.css">
+  <!--Scripts-->
+  <script src="assets/js/jquery-1.8.2.min.js" type="text/javascript"></script>
+  <script src="assets/js/main.js" type="text/javascript"></script>
+  <script src="assets/js/login.js" type="text/javascript"></script>
+  <script src="assets/js/content.js" type="text/javascript"></script>
+  <script src="assets/js/player.js" type="text/javascript"></script>
+
+</head>
+
+<body onload="init()">
+  <div id="splash"></div>
+  <!-- Netcast info -->
+  <object type="application/x-netcast-info" id="device" width="0" height="0"></object>
+  <!-- Login form-->
+  <div class="login-box">
+    <img src="assets/images/jellyfin.png" class="avatar" alt="Avatar Image">
+    <h1>Login Here</h1>
+    <form>
+      <!-- IP INPUT -->
+      <label for="ip">IP Adress</label>
+      <input id="ip" type="text" placeholder="Enter IP">
+      <!-- PORT INPUT -->
+      <label for="port">Port</label>
+      <input id="port" type="text" placeholder="Enter Port">
+      <input onclick="login();" type="button" value="Log In">
+      <a href="about.html">About</a><br>
+      <a href="debug.html">Debug</a>
+    </form>
+  </div>
+  <div id="users"></div>
+  <div class="password-box">
+    <img src="assets/images/jellyfin.png" class="avatar" alt="Avatar Image">
+    <h1>Login Here</h1>
+    <form>
+      <!-- Password -->
+      <label for="password">Password</label>
+      <input id="password_input" type="password" placeholder="Enter Password">
+      <input onclick="password();" type="button" value="Log In">
+      <a href="about.html">About</a><br>
+      <a href="debug.html">Debug</a>
+    </form>
+  </div>
+  <!-- Main menu -->
+  <table id="content">
+    <tr>
+      <td style="padding:0 30px 0 30px;"><img id=movies_img src="assets/images/menus/movies.jpg" width=360 height=202 onClick="content(this.id);">
+        <h5>Movies</h5>
+      </td>
+      <td style="padding:0 30px 0 30px;"><img id=tv_img src="assets/images/menus/tv.jpg" width=360 height=202 onClick="content(this.id);">
+        <h5>TV Shows</h5>
+      </td>
+      <td style="padding:0 30px 0 30px;"><img id=music_img src="assets/images/menus/music.jpg" width=360 height=202 onClick="content(this.id);">
+        <h5>Music</h5>
+      </td>
+    </tr>
+  </table>
+  <!-- TV/Movies/Music items -->
+  <div id="items" class="items"></div>
+
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+@CHARSET "UTF-8";
+
+/*Body background*/
+body {
+  margin: 0;
+  padding: 0;
+  background: #101010 no-repeat center top;
+  background-size: cover;
+  font-family: sans-serif;
+  height: 100vh;
+}
+
+#splash {
+  height: 720px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 1280px;
+  z-index: 100;
+  background-color: black;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-image: url("assets/images/splashscreen.png");
+}
+
+#items, #content, .password-box {
+  display: none;
+}
