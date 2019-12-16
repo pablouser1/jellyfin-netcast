@@ -2,19 +2,27 @@
 <html>
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Jellyfin</title>
-<!--Virtual Keyboard-->
-    <script id="mainVKScript" type="text/javascript" src="assets/jsLgVKeyboard/LgVKeyboard.js"></script>
-    <link type="text/css" rel="Stylesheet" href="assets/jsLgVKeyboard/LgVKeyboard.css" />
-    <script src="assets/js/jquery-3.4.1.min.js" type="text/javascript"></script>
-    <script src="assets/js/video.js" type="text/javascript"></script>
-    <script src="assets/js/debug.js" type="text/javascript"></script>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Jellyfin</title>
+  <!--Virtual Keyboard-->
+  <script id="mainVKScript" type="text/javascript" src="assets/jsLgVKeyboard/LgVKeyboard.js"></script>
+  <link type="text/css" rel="Stylesheet" href="assets/jsLgVKeyboard/LgVKeyboard.css" />
+  <script src="assets/js/jquery-1.8.2.min.js" type="text/javascript"></script>
+  <script src="assets/js/debug.js" type="text/javascript"></script>
 </head>
 
 <body>
   <object type="application/x-netcast-info" id="device" width="0" height="0"></object>
-  <div id="videoplayer_debug"></div>
-  <div id="output"></div>
+  <object
+    id="video"
+    type="application/x-netcast-av"
+    width=1280
+    height=720
+    data="assets/media/tests.mp4"
+    autoStart=false
+    PlayCount="0">
+</object>
 
+  <div id="output"></div>
 </body>
+</html>

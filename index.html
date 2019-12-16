@@ -11,41 +11,43 @@
   <!--Styles-->
   <link rel="stylesheet" href="assets/css/main.css">
   <link rel="stylesheet" href="assets/css/login.css">
+  <link rel="stylesheet" href="assets/css/content.css">
+  <link rel="stylesheet" href="assets/css/video.css">
   <!--Scripts-->
   <script src="assets/js/jquery-1.8.2.min.js" type="text/javascript"></script>
   <script src="assets/js/main.js" type="text/javascript"></script>
   <script src="assets/js/login.js" type="text/javascript"></script>
   <script src="assets/js/content.js" type="text/javascript"></script>
-  <script src="assets/js/player.js" type="text/javascript"></script>
+  <script src="assets/js/video.js" type="text/javascript"></script>
 
 </head>
 
-<body onload="init()">
-  <div id="splash"></div>
+<body onload="init();">
+
   <!-- Netcast info -->
   <object type="application/x-netcast-info" id="device" width="0" height="0"></object>
+
+
   <!-- Login form-->
   <div class="login-box">
     <img src="assets/images/jellyfin.png" class="avatar" alt="Avatar Image">
     <h1>Login Here</h1>
     <form>
       <!-- IP INPUT -->
-      <label for="ip">IP Adress</label>
-      <input id="ip" type="text" placeholder="Enter IP">
+      <label for="ip_input">IP Adress</label>
+      <input id="ip_input" type="text" placeholder="Enter IP">
       <!-- PORT INPUT -->
-      <label for="port">Port</label>
-      <input id="port" type="text" placeholder="Enter Port">
+      <label for="port_input">Port</label>
+      <input id="port_input" type="text" placeholder="Enter Port">
       <input onclick="login();" type="button" value="Log In">
       <a href="about.html">About</a><br>
       <a href="debug.html">Debug</a>
     </form>
   </div>
-  <div id="users"></div>
   <div class="password-box">
     <img src="assets/images/jellyfin.png" class="avatar" alt="Avatar Image">
     <h1>Login Here</h1>
     <form>
-      <!-- Password -->
       <label for="password">Password</label>
       <input id="password_input" type="password" placeholder="Enter Password">
       <input onclick="password();" type="button" value="Log In">
@@ -53,23 +55,71 @@
       <a href="debug.html">Debug</a>
     </form>
   </div>
-  <!-- Main menu -->
-  <table id="content">
-    <tr>
-      <td style="padding:0 30px 0 30px;"><img id=movies_img src="assets/images/menus/movies.jpg" width=360 height=202 onClick="content(this.id);">
-        <h5>Movies</h5>
-      </td>
-      <td style="padding:0 30px 0 30px;"><img id=tv_img src="assets/images/menus/tv.jpg" width=360 height=202 onClick="content(this.id);">
-        <h5>TV Shows</h5>
-      </td>
-      <td style="padding:0 30px 0 30px;"><img id=music_img src="assets/images/menus/music.jpg" width=360 height=202 onClick="content(this.id);">
-        <h5>Music</h5>
-      </td>
-    </tr>
+  <div id="users">
+  <table id="users_table">
+    <thead>Users found:</thead>
+    <tbody></tbody>
+    <tfoot></tfoot>
   </table>
+  </div>
+
+
+  <!-- Nav bar and continue watching table -->
+  <div class="topnav">
+    <ul>
+     <li><a href="">Jellyfin</a></li>
+     <li style="float:right"><a class="active" onclick="back()">Back</a></li>
+   </ul>
+  </div>
+
+  <!-- Libraries -->
+  <div id="content">
+    <table id="content_table">
+      <thead>Your libraries</thead>
+      <tbody></tbody>
+      <tfoot></tfoot>
+    </table>
+  </div>
+
+  <div id="watching">
+    <table id="watching_table">
+      <thead>Continue Watching:</thead>
+      <tbody></tbody>
+      <tfoot></tfoot>
+    </table>
+  </div>
+
   <!-- TV/Movies/Music items -->
-  <div id="items" class="items"></div>
+  <div id="items">
+    <table id="items_table">
+      <tbody></tbody>
+      <tfoot></tfoot>
+    </table>
+  </div>
+  <!-- TV Shows seasons -->
+  <div id="seasons">
+    <table id="seasons_table">
+      <tbody></tbody>
+      <tfoot></tfoot>
+    </table>
+  </div>
 
+  <!-- Video player with controls -->
+  <div id="player">
+    <object
+    id="video"
+    type="application/x-netcast-av"
+    width=1280
+    height=720
+    data="">
+  </object>
+  <div id='player-controls'>
+    <button id='play-pause-button' class='play' title='play' onclick='togglePlayPause();'><img src="assets/images/jellyfin.png" class="avatar" alt="Avatar Image"></button>
+    <button id='stop-button' class='stop' title='stop' onclick='stopPlayer();'>Stop</button>
+    <button id='volume-inc-button' class='volume-plus' title='increase volume' onclick='changeVolume("+");'>Increase volume</button>
+    <button id='volume-dec-button' class='volume-minus' title='decrease volume' onclick='changeVolume("-");'>Decrease volume</button>
+    <progress id='progress-bar' min='0' max='100' value='0'>0% played</progress>
+  </div>
+  </div>
 </body>
-
 </html>

@@ -1,28 +1,39 @@
-@CHARSET "UTF-8";
-
-/*Body background*/
 body {
+  background: #101010;
+  color: white;
+  line-height: 1.35;
+}
+
+#content, .password-box, .topnav, #watching, #seasons, #player {
+  display: none;
+}
+
+img {
+  margin-top:5px; /*to have the space above the image*/
+  margin-bottom:10px; /*to have the space under the image*/
+  margin-right: 10px;
+}
+ul {
+  list-style-type: none;
   margin: 0;
   padding: 0;
-  background: #101010 no-repeat center top;
-  background-size: cover;
-  font-family: sans-serif;
-  height: 100vh;
+  overflow: hidden;
+  background-color: #333;
 }
 
-#splash {
-  height: 720px;
-  left: 0;
-  position: absolute;
-  top: 0;
-  width: 1280px;
-  z-index: 100;
-  background-color: black;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-image: url("assets/images/splashscreen.png");
+li {
+  float: left;
 }
 
-#items, #content, .password-box {
-  display: none;
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+  background-color: #00a4dc;
 }

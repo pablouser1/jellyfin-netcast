@@ -17,4 +17,12 @@ You can check [these](http://webostv.developer.lge.com/discover/netcast/document
 
 Looks like a good objective to me
 
-- [ ] Adding some CSS in order to make the program look at least OK.
+- [ ] Fallback for blank images
+
+- [ ] Cache
+
+- [ ] Compability with old Netcast versions
+
+- [ ] Removing jquery dependency and use only vanilla JS
+
+- [ ] Optimize

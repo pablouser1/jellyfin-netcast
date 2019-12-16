@@ -1,0 +1,27 @@
+#items {
+  display: none;
+  padding-top: 50px;
+  padding-right: 30px;
+  padding-left: 80px;
+}
+
+table {
+  margin: auto;
+  border-collapse: collapse;
+  overflow-x: auto;
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+}
+
+td {
+  padding: .5rem;
+}
+
+td:first-of-type, th:first-of-type {
+  border-left: none;
+}
+
+td:last-of-type, th:last-of-type {
+  border-right: none;
+}
