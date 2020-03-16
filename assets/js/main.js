@@ -14,7 +14,7 @@ function init() {
 }
 
 // JSON Loading
-function loadJSON(path, type, tof, success, error) {
+function loadJSON(path, type, success, error) {
   var xhr = new XMLHttpRequest();
   xhr.onreadystatechange = function() {
     if (xhr.readyState === XMLHttpRequest.DONE) {
@@ -27,7 +27,7 @@ function loadJSON(path, type, tof, success, error) {
       }
     }
   };
-  xhr.open(type, path, tof);
+  xhr.open(type, path, "true");
   if (useheaders === 1) {
     console.log(user_global);
     xhr.setRequestHeader("X-Emby-Authorization", params);
@@ -42,7 +42,6 @@ function loadJSON(path, type, tof, success, error) {
     xhr.send();
   }
 }
-
 //Back button
 function back() {
 

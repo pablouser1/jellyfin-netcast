@@ -55,6 +55,7 @@
       <a href="debug.html">Debug</a>
     </form>
   </div>
+
   <div id="users">
   <table id="users_table">
     <thead>Users found:</thead>
@@ -66,10 +67,8 @@
 
   <!-- Nav bar and continue watching table -->
   <div class="topnav">
-    <ul>
-     <li><a href="">Jellyfin</a></li>
-     <li style="float:right"><a class="active" onclick="back()">Back</a></li>
-   </ul>
+    <a href="" class="active">Jellyfin</a>
+    <a style="float:right" href="">Back</a>
   </div>
 
   <!-- Libraries -->
@@ -104,9 +103,16 @@
     </table>
   </div>
 
+  <div id="episodes">
+    <table id="seasons_table">
+      <tbody></tbody>
+      <tfoot></tfoot>
+    </table>
+  </div>
+
   <!-- Video player with controls -->
   <div id="player">
-    <object
+    <object width="100%" height="100%"
     id="video"
     type="application/x-netcast-av"
     width=1280

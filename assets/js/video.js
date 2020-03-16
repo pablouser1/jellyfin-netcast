@@ -1,6 +1,16 @@
 function play(content_id){
+
+  var hash = window.location.hash.substring(1);
+  console.log(hash);
+  // Probably a better way to do this
+  if (hash == 'items') {  
+     $("#items").hide();
+  }
+  if (hash == 'episodes') {
+     $("#episodes").hide();
+  }
+
   parent.location.hash = "#player";
-  $("#items").hide();
   $(".topnav").hide();
   $("#player").show();
   var video = document.getElementById("video");
@@ -41,8 +51,7 @@ function changeVolume(direction) {
 
 function updateProgressBar() {
    var progressBar = document.getElementById('progress-bar');
-   var percentage = Math.floor((100 / video.duration) *
-   video.currentTime);
+   var percentage = Math.floor((100 / video.duration) * video.currentTime);
    progressBar.value = percentage;
    progressBar.innerHTML = percentage + '% played';
 }

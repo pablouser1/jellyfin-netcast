@@ -1,6 +1,7 @@
 function showlibrary(){
+
   //Get all libraries and display them, with their respective image.
-  loadJSON(whole_url + "/jellyfin/Users/" + id + "/Views", "GET", "true",
+  loadJSON(whole_url + "/jellyfin/Users/" + id + "/Views", "GET",
     function(data) {
       for (i = 0; i < data.Items.length; i++) { 
         console.log(i + " " + data.Items[i].Name);
@@ -14,7 +15,7 @@ function showlibrary(){
   );
 
   //Get all continue watching and display them, with their respective image.
-  loadJSON(whole_url + "/jellyfin/Users/" + id + "/Items?Limit=20&Recursive=true&SortBy=DatePlayed&SortOrder=Descending&Filters=IsResumable", "GET", "true",
+  loadJSON(whole_url + "/jellyfin/Users/" + id + "/Items?Limit=20&Recursive=true&SortBy=DatePlayed&SortOrder=Descending&Filters=IsResumable", "GET",
     function(data) {
       for (i = 0; i < data.Items.length; i++) { 
         console.log(i + " " + data.Items[i].Name);
@@ -35,20 +36,20 @@ function content(content_id, content_class){
   $("#items").show();
   $("#watching").hide();
   parent.location.hash = "#items";
-  loadJSON(whole_url + "/jellyfin/Users/" + id + "/Items?ParentId=" + content_id + "&SortBy=SortName", "GET", "true",
+  loadJSON(whole_url + "/jellyfin/Users/" + id + "/Items?ParentId=" + content_id + "&SortBy=SortName", "GET",
     function(data) {
       switch(content_class){
         case "tvshows":
           for (i = 0; i < data.Items.length; i++) {
-          console.log(i + " " + data.Items[i].Name);
-          document.getElementById("items").innerHTML += "<img id='" + data.Items[i].Id + "' src='" + whole_url + "/jellyfin/Items/" + data.Items[i].Id + "/Images/Primary' width=180 height=270 onClick='seasons(this.id);'</img>";
-        }
+            console.log(i + " " + data.Items[i].Name);
+            document.getElementById("items").innerHTML += "<img id='" + data.Items[i].Id + "' src='" + whole_url + "/jellyfin/Items/" + data.Items[i].Id + "/Images/Primary' width=180 height=270 onClick='seasons(this.id);'</img>";
+          }
         break;
         case "movies":
           for (i = 0; i < data.Items.length; i++) {
             console.log(i + " " + data.Items[i].Name);
             document.getElementById("items").innerHTML += "<img id='" + data.Items[i].Id + "' src='" + whole_url + "/jellyfin/Items/" + data.Items[i].Id + "/Images/Primary' width=180 height=270 onClick='play(content_id_global);'</img>";
-        }
+          }
         break;
         case "music":
         break;
@@ -58,4 +59,39 @@ function content(content_id, content_class){
       console.error(xhr);
     }
   );
+}
+
+function seasons(content_id){
+  console.log(content_id)
+  $("#items").hide();
+  $("#seasons").show();
+  loadJSON(whole_url + "/jellyfin/Users/" + id + "/Items?ParentId=" + content_id + "&SortBy=SortName", "GET",
+  function(data) {
+    for (i = 0; i < data.Items.length; i++) {
+      console.log(i + " " + data.Items[i].Name);
+      document.getElementById("seasons").innerHTML += "<img id='" + data.Items[i].Id + "' src='" + whole_url + "/jellyfin/Items/" + data.Items[i].SeriesId + "/Images/Primary' width=180 height=270 onClick='episodes(this.id);'</img>";
+    }
+  },
+  function(xhr) {
+    console.error(xhr);
+  }
+);
+  parent.location.hash = "#seasons";
+}
+
+function episodes(content_id){
+  $("#seasons").hide();
+  $("#episodes").show();
+  loadJSON(whole_url + "/jellyfin/Users/" + id + "/Items?ParentId=" + content_id + "&SortBy=SortName", "GET",
+  function(data) {
+  for (i = 0; i < data.Items.length; i++) {
+    console.log(i + " " + data.Items[i].Name);
+    document.getElementById("episodes").innerHTML += "<img id='" + data.Items[i].Id + "' src='" + whole_url + "/jellyfin/Items/" + data.Items[i].Id + "/Images/Primary' width=400 height=225 onClick='play(this.id);'</img>";
+  }
+  },
+  function(xhr) {
+  console.error(xhr);
+  }
+);
+parent.location.hash = "#episodes";
 }

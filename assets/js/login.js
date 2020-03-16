@@ -14,11 +14,11 @@ function login() {
   }
 
   //Get all users and show them.
-  loadJSON(whole_url + "/jellyfin/Users/Public", "GET", "true",
+  loadJSON(whole_url + "/jellyfin/Users/Public", "GET",
     function(data) {
       $(".login-box").hide();
       $("#users").show();
-      for (i = 0; i < data.length; i++) { 
+      for (i = 0; i < data.length; i++) {
         console.log(i + " " + data[i].Name);
         $(users_table).find("tbody").append("<td><a href='javascript:user(" + '"' + data[i].Name + '"' + ");'>" + "<img src=assets/images/menus/user_icon.png width='152' height='152'</a></td>");
         $(users_table).find("tfoot").append("<td>" + data[i].Name + "</td>");
@@ -34,9 +34,9 @@ function login() {
 function user(username) {
   user_global = username;
   //Get User's ID
-  loadJSON(whole_url + "/jellyfin/Users/Public", "GET", "true",
+  loadJSON(whole_url + "/jellyfin/Users/Public", "GET",
     function(data) {
-      for (i = 0; i < data.length; i++) { 
+      for (i = 0; i < data.length; i++) {
         console.log(i + " " + data[i].Name);
         if (data[i].Name === username) {
           id = data[i].Id;
@@ -60,11 +60,11 @@ function password() {
   useheaders = 1;
 
   params = 'Emby UserId="' + id + '", Client="Netcast", Device="' + modelName + '", DeviceId="' + serialNumber + '", Version="1.0';
-  loadJSON(whole_url + "/jellyfin/Users/authenticatebyname", "POST", "false",
+  loadJSON(whole_url + "/jellyfin/Users/authenticatebyname", "POST",
     function(data) {
       AccessToken = data.AccessToken;
       console.log("Your access token is: " + AccessToken);
-      params = 'Emby UserId="' + id + '", Client="Netcast", Device="' + modelName + '", DeviceId="' + serialNumber + '", Version="1.0.0.0" Token="'+ AccessTo ken + "'";
+      params = 'Emby UserId="' + id + '", Client="Netcast", Device="' + modelName + '", DeviceId="' + serialNumber + '", Version="1.0.0.0"';
       showlibrary();
       $(".password-box").hide();
       $("#content").show();
