@@ -28,18 +28,13 @@ function loadJSON(path, type, success, error) {
     }
   };
   xhr.open(type, path, "true");
-  if (useheaders === 1) {
-    console.log(user_global);
-    xhr.setRequestHeader("X-Emby-Authorization", params);
-    xhr.setRequestHeader("Content-Type", "application/json");
-    // If there's an Access token avaible, send it with the request.
-    if (AccessToken) {
-      xhr.setRequestHeader("X-MediaBrowser-Token", AccessToken);
-    }
-    //If headers are used, send also username and password.
-    xhr.send('{ "Username":' + user_global + ', "Pw":' + passwd + '}');
-  } else {
+  xhr.setRequestHeader("Content-Type", "application/json");
+  xhr.setRequestHeader("X-Emby-Authorization", params);
+  if (loggedin == 1) {
     xhr.send();
+  }
+  else{
+    xhr.send('{"Username":"' + username + '","Pw":"' + passwd + '"}');
   }
 }
 //Back button

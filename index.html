@@ -39,36 +39,35 @@
       <!-- PORT INPUT -->
       <label for="port_input">Port</label>
       <input id="port_input" type="text" placeholder="Enter Port">
-      <input onclick="login();" type="button" value="Log In">
-      <a href="about.html">About</a><br>
-      <a href="debug.html">Debug</a>
-    </form>
-  </div>
-  <div class="password-box">
-    <img src="assets/images/jellyfin.png" class="avatar" alt="Avatar Image">
-    <h1>Login Here</h1>
-    <form>
-      <label for="password">Password</label>
-      <input id="password_input" type="password" placeholder="Enter Password">
-      <input onclick="password();" type="button" value="Log In">
+      <!-- Base URL-->
+      <label for="jellybase_input">Port</label>
+      <input id="jellybase_input" type="text" placeholder="Enter base URL (leave empty if none)">
+      <!-- Bottom-->
+      <input onclick="checkserver();" type="button" value="Log In">
       <a href="about.html">About</a><br>
       <a href="debug.html">Debug</a>
     </form>
   </div>
 
-  <div id="users">
-  <table id="users_table">
-    <thead>Users found:</thead>
-    <tbody></tbody>
-    <tfoot></tfoot>
-  </table>
+  <div class="user-box">
+    <img src="assets/images/jellyfin.png" class="avatar" alt="Avatar Image">
+    <h1>Login Here</h1>
+    <form>
+      <label for="username">Username</label>
+      <input id="username_input" type="text" placeholder="Enter Username">
+      <label for="password">Password</label>
+      <input id="password_input" type="password" placeholder="Enter Password">
+      <input onclick="user();" type="button" value="Log In">
+      <a href="about.html">About</a><br>
+      <a href="debug.html">Debug</a>
+    </form>
   </div>
 
 
   <!-- Nav bar and continue watching table -->
   <div class="topnav">
     <a href="" class="active">Jellyfin</a>
-    <a style="float:right" href="">Back</a>
+    <a style="float:right" onclick="back();">Back</a>
   </div>
 
   <!-- Libraries -->

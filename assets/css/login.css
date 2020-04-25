@@ -41,7 +41,7 @@
   margin-bottom: 20px;
 }
 
-.login-box input[type="text"], .login-box input[type="password"] {
+.login-box input[type="text"] {
   border: none;
   border-bottom: 1px solid #fff;
   background: transparent;
@@ -78,7 +78,7 @@
   color: #fff;
 }
 
-.password-box {
+.user-box {
   width: 320px;
   height: 420px;
   background: #000;
@@ -92,7 +92,7 @@
   padding: 70px 30px;
 }
 
-.password-box .avatar {
+.user-box .avatar {
   width: 100px;
   height: 100px;
   border-radius: 50%;
@@ -102,26 +102,26 @@
   left: -webkit-calc(50% - 50px);
 }
 
-.password-box h1 {
+.user-box h1 {
   margin: 0;
   padding: 0 0 20px;
   text-align: center;
   font-size: 22px;
 }
 
-.password-box label {
+.user-box label {
   margin: 0;
   padding: 0;
   font-weight: bold;
   display: block;
 }
 
-.password-box input {
+.user-box input {
   width: 100%;
   margin-bottom: 20px;
 }
 
-.password-box input[type="text"], .password-box input[type="password"] {
+.user-box input[type="text"], .user-box input[type="password"] {
   border: none;
   border-bottom: 1px solid #fff;
   background: transparent;
@@ -131,7 +131,7 @@
   font-size: 16px;
 }
 
-.password-box input[type="button"] {
+.user-box input[type="button"] {
   border: none;
   outline: none;
   height: 40px;
@@ -141,32 +141,19 @@
   border-radius: 20px;
 }
 
-.password-box input[type="submit"]:hover {
+.user-box input[type="submit"]:hover {
   cursor: pointer;
   background: #ffc107;
   color: #000;
 }
 
-.password-box a {
+.user-box a {
   text-decoration: none;
   font-size: 12px;
   line-height: 20px;
   color: darkgrey;
 }
 
-.password-box a:hover {
+.user-box a:hover {
   color: #fff;
-}
-
-#users {
-  display: none;
-  position: fixed;
-  width: 340px;
-  height: 280px;
-  top: 50%;
-  left: 50%;
-  margin-top: -140px;
-  margin-left: -170px;
-  text-align: center;
-  color: white;
 }
