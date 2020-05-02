@@ -18,11 +18,13 @@ You can check [these](http://webostv.developer.lge.com/discover/netcast/document
 Looks like a good objective to me
 
 - [ ] Fallback for blank images
+  
+- [ ] Optimize
+
+- [ ] CSS 
 
 - [ ] Cache
 
 - [ ] Compability with old Netcast versions
 
-- [ ] Removing jquery dependency and use only vanilla JS
-
-- [ ] Optimize
+- [ ] Compability with regular TV remote 

@@ -16,7 +16,7 @@ function init() {
 // JSON Loading
 function loadJSON(path, type, success, error) {
   var xhr = new XMLHttpRequest();
-  xhr.onreadystatechange = function() {
+  xhr.onreadystatechange = function () {
     if (xhr.readyState === XMLHttpRequest.DONE) {
       if (xhr.status === 200) {
         if (success)
@@ -32,8 +32,7 @@ function loadJSON(path, type, success, error) {
   xhr.setRequestHeader("X-Emby-Authorization", params);
   if (loggedin == 1) {
     xhr.send();
-  }
-  else{
+  } else {
     xhr.send('{"Username":"' + username + '","Pw":"' + passwd + '"}');
   }
 }
@@ -47,11 +46,19 @@ function back() {
     $("#content").show();
     $("#watching").show();
     $("#items").hide();
+    document.getElementById("items").innerHTML = ""
     parent.location.hash = "#main_menu";
   }
   if (hash == 'seasons') {
     $("#items").show();
     $("#seasons").hide();
+    document.getElementById("seasons").innerHTML = ""
     parent.location.hash = "#items";
+  }
+  if (hash == 'episodes') {
+    $("#seasons").show();
+    $("#episodes").hide();
+    document.getElementById("episodes").innerHTML = ""
+    parent.location.hash = "#seasons";
   }
 }

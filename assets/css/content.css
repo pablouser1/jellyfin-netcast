@@ -1,27 +1,22 @@
+img {
+  cursor: pointer;
+}
+
 #items, #seasons, #episodes {
   display: none;
   padding-top: 50px;
   padding-right: 30px;
   padding-left: 80px;
+  position: relative;
+  text-align: center;
 }
 
-table {
-  margin: auto;
-  border-collapse: collapse;
-  overflow-x: auto;
-  display: block;
-  width: fit-content;
-  max-width: 100%;
+.text-items {
+  padding-top: 10px;
 }
 
-td {
-  padding: .5rem;
-}
-
-td:first-of-type, th:first-of-type {
-  border-left: none;
-}
-
-td:last-of-type, th:last-of-type {
-  border-right: none;
+.bottom-right {
+  position: absolute;
+  bottom: 8px;
+  right: 16px;
 }

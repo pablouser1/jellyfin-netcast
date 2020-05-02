@@ -36,17 +36,12 @@ function togglePlayPause() {
 }
 
 function stopPlayer() {
+   video.data = ''
    video.pause();
    video.currentTime = 0;
    $("#player").hide();
    $("#items").show();
    parent.location.hash = "#items";
-}
-
-function changeVolume(direction) {
-   if (direction === '+') video.volume += video.volume == 1 ? 0 : 0.1;
-   else video.volume -= (video.volume == 0 ? 0 : 0.1);
-   video.volume = parseFloat(video.volume).toFixed(1);
 }
 
 function updateProgressBar() {

@@ -40,7 +40,7 @@
       <label for="port_input">Port</label>
       <input id="port_input" type="text" placeholder="Enter Port">
       <!-- Base URL-->
-      <label for="jellybase_input">Port</label>
+      <label for="jellybase_input">Base URL</label>
       <input id="jellybase_input" type="text" placeholder="Enter base URL (leave empty if none)">
       <!-- Bottom-->
       <input onclick="checkserver();" type="button" value="Log In">
@@ -67,7 +67,7 @@
   <!-- Nav bar and continue watching table -->
   <div class="topnav">
     <a href="" class="active">Jellyfin</a>
-    <a style="float:right" onclick="back();">Back</a>
+    <a style="float:right; cursor: pointer;" onclick="back();">Back</a>
   </div>
 
   <!-- Libraries -->
@@ -88,43 +88,23 @@
   </div>
 
   <!-- TV/Movies/Music items -->
-  <div id="items">
-    <table id="items_table">
-      <tbody></tbody>
-      <tfoot></tfoot>
-    </table>
-  </div>
-  <!-- TV Shows seasons -->
-  <div id="seasons">
-    <table id="seasons_table">
-      <tbody></tbody>
-      <tfoot></tfoot>
-    </table>
-  </div>
+  <div id="items"></div>
 
-  <div id="episodes">
-    <table id="seasons_table">
-      <tbody></tbody>
-      <tfoot></tfoot>
-    </table>
-  </div>
+  <!-- TV Shows seasons -->
+  <div id="seasons"></div>
+
+  <!-- TV Shows episodes -->
+  <div id="episodes"></div>
 
   <!-- Video player with controls -->
   <div id="player">
-    <object width="100%" height="100%"
-    id="video"
-    type="application/x-netcast-av"
-    width=1280
-    height=720
-    data="">
-  </object>
-  <div id='player-controls'>
-    <button id='play-pause-button' class='play' title='play' onclick='togglePlayPause();'></button>
-    <button id='stop-button' class='stop' title='stop' onclick='stopPlayer();'>Stop</button>
-    <button id='volume-inc-button' class='volume-plus' title='increase volume' onclick='changeVolume("+");'>Increase volume</button>
-    <button id='volume-dec-button' class='volume-minus' title='decrease volume' onclick='changeVolume("-");'>Decrease volume</button>
-    <progress id='progress-bar' min='0' max='100' value='0'>0% played</progress>
-  </div>
+    <object width="100%" height="100%" id="video" type="application/x-netcast-av" width=1280 height=720 data="">
+    </object>
+    <div id='player-controls'>
+      <button id='play-pause-button' class='play' title='play' onclick='togglePlayPause();'></button>
+      <button id='stop-button' class='stop' title='stop' onclick='stopPlayer();'>Stop</button>
+      <progress id='progress-bar' min='0' max='100' value='0'>0% played</progress>
+    </div>
   </div>
 </body>
 
