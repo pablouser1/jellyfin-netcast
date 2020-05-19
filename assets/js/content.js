@@ -47,10 +47,14 @@ function content(content_id, content_class) {
         case "movies":
           for (i = 0; i < data.Items.length; i++) {
             console.log(i + " " + data.Items[i].Name);
-            document.getElementById("items").insertAdjacentHTML("beforeend", "<img id='" + data.Items[i].Id + "' src='" + whole_url + "/Items/" + data.Items[i].Id + "/Images/Primary' width=180 height=270 onClick='play(content_id_global);'</img>");
+            document.getElementById("items").insertAdjacentHTML("beforeend", "<img id='" + data.Items[i].Id + "' src='" + whole_url + "/Items/" + data.Items[i].Id + "/Images/Primary' width=180 height=270 onClick='playvid(content_id_global);'</img>");
           }
           break;
         case "music":
+          for (i = 0; i < data.Items.length; i++) {
+            console.log(i + " " + data.Items[i].Name);
+            document.getElementById("items").insertAdjacentHTML("beforeend", "<img id='" + data.Items[i].Id + "' src='" + whole_url + "/Items/" + data.Items[i].Id + "/Images/Primary' width=181 height=181 onClick='playmusic(content_id_global);'</img>");
+          }
           break;
       }
     },

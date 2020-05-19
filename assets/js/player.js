@@ -1,4 +1,6 @@
-function play(content_id){
+// Video
+
+function playvid(content_id){
 
   var hash = window.location.hash.substring(1);
   console.log(hash);
@@ -49,4 +51,16 @@ function updateProgressBar() {
    var percentage = Math.floor((100 / video.duration) * video.currentTime);
    progressBar.value = percentage;
    progressBar.innerHTML = percentage + '% played';
+}
+
+// Music
+
+function playmusic(content_id){
+   var hash = window.location.hash.substring(1);
+   console.log(hash);
+   $("#items").hide();
+   parent.location.hash = "#player";
+   $(".topnav").hide();
+   $("#music").show();
+   document.getElementById('music').src = whole_url + "/emby/Audio/" + content_id +  "/stream.mp3";
 }

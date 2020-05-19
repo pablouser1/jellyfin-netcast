@@ -4,7 +4,7 @@ body {
   line-height: 1.35;
 }
 
-#content, .topnav, .user-box, #watching, #seasons, #player {
+#content, .topnav, .user-box, #watching, #seasons, #player, #music {
   display: none;
 }
 
