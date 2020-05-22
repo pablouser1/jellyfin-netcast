@@ -98,10 +98,10 @@
 
   <!-- Video player with controls -->
   <div id="player">
-    <object width="100%" height="100%" id="video" type="application/x-netcast-av" width=1280 height=720 data="">
-    </object>
+    <video width="100%" height="100%" id="video" type="application/x-netcast-av" width=1280 height=720 data="">
+    </video>
     <div id='player-controls'>
-      <button id='play-pause-button' class='play' title='play' onclick='togglePlayPause();'></button>
+      <button id='play-pause-button' class='play' title='play' onclick='togglePlayPause();'>Pause</button>
       <button id='stop-button' class='stop' title='stop' onclick='stopPlayer();'>Stop</button>
       <progress id='progress-bar' min='0' max='100' value='0'>0% played</progress>
     </div>

@@ -1,24 +1,24 @@
 // Video
 
-function playvid(content_id){
+function playvid(content_id) {
 
-  var hash = window.location.hash.substring(1);
-  console.log(hash);
-  // Probably a better way to do this
-  if (hash == 'items') {  
-     $("#items").hide();
-  }
-  if (hash == 'episodes') {
-     $("#episodes").hide();
-  }
+   var hash = window.location.hash.substring(1);
+   console.log(hash);
+   // Probably a better way to do this
+   if (hash == 'items') {
+      $("#items").hide();
+   }
+   if (hash == 'episodes') {
+      $("#episodes").hide();
+   }
 
-  parent.location.hash = "#player";
-  $(".topnav").hide();
-  $("#player").show();
-  var video = document.getElementById("video");
-  video.addEventListener('timeupdate', updateProgressBar, false);
-  video.data = whole_url + "/jellyfin/Videos/" + content_id + "/master.m3u8"
-  video.play(1);
+   parent.location.hash = "#player";
+   $(".topnav").hide();
+   $("#player").show();
+   var video = document.getElementById("video");
+   video.addEventListener('timeupdate', updateProgressBar, false);
+   video.src = whole_url + "/emby/Videos/" + content_id + "/stream.mp4"
+   video.play(1);
 }
 
 function togglePlayPause() {
@@ -55,12 +55,12 @@ function updateProgressBar() {
 
 // Music
 
-function playmusic(content_id){
+function playmusic(content_id) {
    var hash = window.location.hash.substring(1);
    console.log(hash);
    $("#items").hide();
    parent.location.hash = "#player";
    $(".topnav").hide();
    $("#music").show();
-   document.getElementById('music').src = whole_url + "/emby/Audio/" + content_id +  "/stream.mp3";
+   document.getElementById('music').src = whole_url + "/emby/Audio/" + content_id + "/stream.mp3";
 }
