@@ -1,4 +1,4 @@
-.login-box {
+.host-box {
   width: 320px;
   height: 420px;
   background: #000;
@@ -12,7 +12,7 @@
   padding: 70px 30px;
 }
 
-.login-box .avatar {
+.host-box .avatar {
   width: 100px;
   height: 100px;
   border-radius: 50%;
@@ -22,26 +22,26 @@
   left: -webkit-calc(50% - 50px);
 }
 
-.login-box h1 {
+.host-box h1 {
   margin: 0;
   padding: 0 0 20px;
   text-align: center;
   font-size: 22px;
 }
 
-.login-box label {
+.host-box label {
   margin: 0;
   padding: 0;
   font-weight: bold;
   display: block;
 }
 
-.login-box input {
+.host-box input {
   width: 100%;
   margin-bottom: 20px;
 }
 
-.login-box input[type="text"] {
+.host-box input[type="text"] {
   border: none;
   border-bottom: 1px solid #fff;
   background: transparent;
@@ -51,7 +51,7 @@
   font-size: 16px;
 }
 
-.login-box input[type="button"] {
+.host-box input[type="button"] {
   border: none;
   outline: none;
   height: 40px;
@@ -61,20 +61,20 @@
   border-radius: 20px;
 }
 
-.login-box input[type="submit"]:hover {
+.host-box input[type="submit"]:hover {
   cursor: pointer;
   background: #ffc107;
   color: #000;
 }
 
-.login-box a {
+.host-box a {
   text-decoration: none;
   font-size: 12px;
   line-height: 20px;
   color: darkgrey;
 }
 
-.login-box a:hover {
+.host-box a:hover {
   color: #fff;
 }
 

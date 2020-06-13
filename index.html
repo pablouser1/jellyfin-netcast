@@ -29,19 +29,13 @@
 
 
   <!-- Login form-->
-  <div class="login-box">
+  <div class="host-box">
     <img src="assets/images/jellyfin.png" class="avatar" alt="Avatar Image">
     <h1>Login Here</h1>
     <form>
       <!-- IP INPUT -->
-      <label for="ip_input">IP Adress</label>
-      <input id="ip_input" type="text" placeholder="Enter IP">
-      <!-- PORT INPUT -->
-      <label for="port_input">Port</label>
-      <input id="port_input" type="text" placeholder="Enter Port">
-      <!-- Base URL-->
-      <label for="jellybase_input">Base URL</label>
-      <input id="jellybase_input" type="text" placeholder="Enter base URL (leave empty if none)">
+      <label for="host_input">Server:</label>
+      <input id="host_input" type="text">
       <!-- Bottom-->
       <input onclick="checkserver();" type="button" value="Log In">
       <a href="about.html">About</a><br>
@@ -62,7 +56,6 @@
       <a href="debug.html">Debug</a>
     </form>
   </div>
-
 
   <!-- Nav bar and continue watching table -->
   <div class="topnav">
@@ -98,8 +91,7 @@
 
   <!-- Video player with controls -->
   <div id="player">
-    <video width="100%" height="100%" id="video" type="application/x-netcast-av" width=1280 height=720 data="">
-    </video>
+    <object width="100%" height="100%" id="video" type="application/x-netcast-av" width=1280 height=720 data=""></object>
     <div id='player-controls'>
       <button id='play-pause-button' class='play' title='play' onclick='togglePlayPause();'>Pause</button>
       <button id='stop-button' class='stop' title='stop' onclick='stopPlayer();'>Stop</button>

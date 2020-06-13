@@ -3,18 +3,14 @@ var loggedin;
 
 function checkserver() {
   //Store login info
-  var ip = document.getElementById("ip_input").value;
-  var port = document.getElementById("port_input").value;
-  var jellybase = document.getElementById("jellybase_input").value;
+  host = document.getElementById("host_input").value;
 
-  whole_url = "http://" + ip + ":" + port + "/" + jellybase
-  console.log(whole_url)
-  // A ping, kinda
+  // A ping, kinda. Just to make sure that the server is alive
   var xhttp = new XMLHttpRequest();
-  xhttp.open("GET", whole_url + "/Users/Public", false);
+  xhttp.open("GET", host + "/Users/Public", false);
   try {
     xhttp.send();
-    $(".login-box").hide();
+    $(".host-box").hide();
     $(".user-box").show();
   } catch (NetworkError) {
     alert("Error")
@@ -28,7 +24,7 @@ function user() {
   
   //Set headers. (Probably there's a better way to do this)
   params = 'Mediabrowser Client="Netcast", Device="' + modelName + '", DeviceId="' + serialNumber + '", Version="1.0.0"';
-  loadJSON(whole_url + "/Users/authenticatebyname", "POST",
+  loadJSON(host + "/Users/authenticatebyname", "POST",
     function (data) {
       AccessToken = data.AccessToken;
       params = 'Mediabrowser Client="Netcast", Device="' + modelName + '", DeviceId="' + serialNumber + '", Version="1.0.0", Token="' + AccessToken + '"';
@@ -36,7 +32,7 @@ function user() {
       console.log("Your access token is: " + AccessToken);
 
       // Get user ID
-      loadJSON(whole_url + "/Users", "GET",
+      loadJSON(host + "/Users", "GET",
         function (data) {
           for (i = 0; i < data.length; i++) {
             console.log(i + " " + data[i].Name);

@@ -17,7 +17,7 @@ function playvid(content_id) {
    $("#player").show();
    var video = document.getElementById("video");
    video.addEventListener('timeupdate', updateProgressBar, false);
-   video.src = whole_url + "/emby/Videos/" + content_id + "/stream.mp4"
+   video.data = host + "/Videos/" + content_id + "/master.m3u8"
    video.play(1);
 }
 
@@ -62,5 +62,5 @@ function playmusic(content_id) {
    parent.location.hash = "#player";
    $(".topnav").hide();
    $("#music").show();
-   document.getElementById('music').src = whole_url + "/emby/Audio/" + content_id + "/stream.mp3";
+   //document.getElementById('music').src = host + "/Audio/" + content_id + "/stream.mp3"; WIP
 }
