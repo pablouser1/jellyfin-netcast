@@ -1,22 +1,45 @@
-img {
-  cursor: pointer;
-}
-
-#items, #seasons, #episodes {
-  display: none;
-  padding-top: 50px;
-  padding-right: 30px;
-  padding-left: 80px;
+.img_container {
   position: relative;
-  text-align: center;
+  display: inline-block;
+  cursor: pointer;
+  color: white;
+  margin: 10px 10px 10px 10px;
 }
 
-.text-items {
-  padding-top: 10px;
-}
-
-.bottom-right {
+.img_container .text {
   position: absolute;
-  bottom: 8px;
-  right: 16px;
+  width: 100%;
+  opacity: 0.5;
+  overflow: hidden;
+  background-color: grey;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, -100%);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.img_container:hover .text {
+  opacity: 1.0;
+}
+
+.hero-image {
+  /* Set a specific height */
+  height: 45vh;
+
+  /* Position and center the image to scale nicely on all screens */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+/* Place text in the middle of the image */
+.hero-text {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
 }

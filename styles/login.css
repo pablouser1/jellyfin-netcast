@@ -61,12 +61,6 @@
   border-radius: 20px;
 }
 
-.host-box input[type="submit"]:hover {
-  cursor: pointer;
-  background: #ffc107;
-  color: #000;
-}
-
 .host-box a {
   text-decoration: none;
   font-size: 12px;
@@ -79,6 +73,7 @@
 }
 
 .user-box {
+  display: none;
   width: 320px;
   height: 420px;
   background: #000;
@@ -139,12 +134,6 @@
   color: #fff;
   font-size: 18px;
   border-radius: 20px;
-}
-
-.user-box input[type="submit"]:hover {
-  cursor: pointer;
-  background: #ffc107;
-  color: #000;
 }
 
 .user-box a {

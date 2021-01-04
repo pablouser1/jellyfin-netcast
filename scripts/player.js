@@ -1,20 +1,8 @@
 // Video
 
-function playvid(content_id) {
-
-   var hash = window.location.hash.substring(1);
-   console.log(hash);
-   // Probably a better way to do this
-   if (hash == 'items') {
-      $("#items").hide();
-   }
-   if (hash == 'episodes') {
-      $("#episodes").hide();
-   }
-
+function startVideo(content_id) {
    parent.location.hash = "#player";
    $(".topnav").hide();
-   $("#player").show();
    var video = document.getElementById("video");
    video.addEventListener('timeupdate', updateProgressBar, false);
    video.data = host + "/Videos/" + content_id + "/master.m3u8"
@@ -51,16 +39,4 @@ function updateProgressBar() {
    var percentage = Math.floor((100 / video.duration) * video.currentTime);
    progressBar.value = percentage;
    progressBar.innerHTML = percentage + '% played';
-}
-
-// Music
-
-function playmusic(content_id) {
-   var hash = window.location.hash.substring(1);
-   console.log(hash);
-   $("#items").hide();
-   parent.location.hash = "#player";
-   $(".topnav").hide();
-   $("#music").show();
-   //document.getElementById('music').src = host + "/Audio/" + content_id + "/stream.mp3"; WIP
 }
