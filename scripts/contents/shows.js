@@ -2,23 +2,28 @@ var shows = {}
 function getShowCard(i) {
     var item = shows[i]
     var show_html =
-        "<div class='img_container'>" +
-            "<img class='img_items' src='" + host + "/Items/" + item.Id + "/Images/Primary'" +
-                "width=180 height=270 onClick='loadShow(`" + i + "`)'</img>" +
+        "<div class='item' onClick='loadShow(" + i + ")'>" +
+            "<img src='" + host + "/Items/" + item.Id + "/Images/Primary' width=180 height=270>" +
             "<div class='text'>" + item.Name + "</div>" +
         "</div>"
     return show_html
 }
 
 function getSeasonCard(item) {
-    var season_html = "<img class='img_items' src='" + host + "/Items/" + item.SeriesId + "/Images/Primary'" +
-        "width=180 height=270 onClick='loadEpisodes(`" + item.Id + "`);'</img>"
+    var season_html =
+        "<div id='" + item.Id + "'  class='item' onClick='loadEpisodes(this.id)'>" +
+            "<img src='" + host + "/Items/" + item.SeriesId + "/Images/Primary' width=180 height=270>" +
+            "<div class='text'>" + item.Name + "</div>" +
+        "</div>"
     return season_html
 }
 
 function getEpisodeCard(item) {
-    var episode_html = "<img class='img_items' src='" + host + "/Items/" + item.Id + "/Images/Primary'" +
-        "width=400 height=225 onClick='startVideo(`" + item.Id + "`);'</img>"
+    var episode_html =
+        "<div id='" + item.Id + "'  class='item' onClick='startVideo(this.id)'>" +
+            "<img src='" + host + "/Items/" + item.Id + "/Images/Primary' width=400 height=225>" +
+            "<div class='text'>" + item.Name + "</div>" +
+        "</div>"
     return episode_html
 }
 
@@ -51,8 +56,8 @@ function getShowInfo(id) {
     loadJSON(host + "/Users/" + userinfo.id + "/Items/" + show.Id, "GET",
         function (data) {
             // -- BANNER -- //
-            var banner_img = "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('" + host + "/Items/" + data.Id + "/Images/Primary?maxWidth=1920&tag=" + data.ImageTags.Primary + "&quality=90')"
-            document.getElementById("showbanner").style.backgroundImage = banner_img
+            var banner_img = host + "/Items/" + data.Id + "/Images/Primary?maxWidth=1920&tag=" + data.ImageTags.Primary + "&quality=90"
+            document.getElementById("heroimg").src = banner_img
 
             // Title
             document.getElementById("show_title").innerHTML = data.Name
@@ -69,7 +74,6 @@ function loadSeasons(id) {
     loadJSON(host + "/Users/" + userinfo.id + "/Items?ParentId=" + show.Id + "&SortBy=SortName", "GET",
     function (data) {
         var items = data.Items
-        console.log(items)
         for (i = 0; i < items.length; i++) {
             console.log(i + " " + items[i].Name);
             document.getElementById("seasons").insertAdjacentHTML("beforeend", getSeasonCard(items[i]));
@@ -80,6 +84,7 @@ function loadSeasons(id) {
     }
 );
 }
+
 function loadEpisodes(content_id) {
     cleanup("episodes")
     loadJSON(host + "/Users/" + userinfo.id + "/Items?ParentId=" + content_id + "&SortBy=SortName", "GET",

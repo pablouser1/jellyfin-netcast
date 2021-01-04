@@ -18,14 +18,14 @@ body {
   display: none;
 }
 
-#topnav {
+#navbar {
   display: none;
   overflow: hidden;
   border-radius: 25px;
   background-color: #333;
 }
 
-.topnav-item {
+.navbar-item {
   display: inline-block;
   color: #f2f2f2;
   text-align: center;
@@ -35,20 +35,20 @@ body {
   cursor: pointer;
 }
 
-.topnav-item:hover {
+.navbar-item:hover {
   background-color: #ddd;
   color: black;
 }
 
-.topnav-item.active {
+.navbar-item.active {
   background-color: #00a4dc;
   color: white;
 }
 
-#topnav .left {
+#navbar .left {
   float: left;
 }
 
-#topnav .right {
+#navbar .right {
   float: right;
 }

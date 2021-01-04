@@ -1,4 +1,5 @@
-.img_container {
+/* Normal container (do not overflow-x) */
+.items_container .item {
   position: relative;
   display: inline-block;
   cursor: pointer;
@@ -6,7 +7,7 @@
   margin: 10px 10px 10px 10px;
 }
 
-.img_container .text {
+.items_container .item .text{
   position: absolute;
   width: 100%;
   opacity: 0.5;
@@ -19,19 +20,40 @@
   text-overflow: ellipsis;
 }
 
-.img_container:hover .text {
+.items_container .item:hover .text {
   opacity: 1.0;
 }
 
-.hero-image {
-  /* Set a specific height */
-  height: 45vh;
+/* Scroll container */
+.items_scroll {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
 
-  /* Position and center the image to scale nicely on all screens */
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+.items_scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.items_scroll .item {
+  display: inline-block;
+  margin: 10px 10px 10px 10px;
+  cursor: pointer;
+}
+
+/* HERO BANNER */
+.hero {
+  display: block;
   position: relative;
+  overflow: hidden;
+  height: 300px;
+}
+
+.hero-image {
+  display: inline-block;
+  width: 100%;
 }
 
 /* Place text in the middle of the image */
@@ -41,5 +63,5 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: white;
+  color: black;
 }

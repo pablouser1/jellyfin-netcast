@@ -11,3 +11,15 @@ function cleanup(type) {
             break
     }
 }
+
+// Scroll left or right
+function moveTo(box, direction) {
+    var el = '#' + box
+    if (direction == "left") {
+        var offset = -$(el).offset().left
+    }
+    else {
+        var offset = $(el).offset().left
+    }
+    $(el).animate({scrollLeft: offset}, 800);
+}

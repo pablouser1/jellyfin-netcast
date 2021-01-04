@@ -19,9 +19,10 @@ function checkHost() {
     if (res) {
       $(".host-box").hide();
       $(".user-box").show();
+      showToast("Valid host")
     }
     else {
-      alert("Error")
+      showToast("Host is not responding to our request")
     }
   })
 }
@@ -63,6 +64,7 @@ function startLogin() {
       console.log(userinfo)
       prepareLibrary();
       parent.location.hash = "#mainmenu";
+      showToast("Loggedin successfully")
     },
     function(error) {
       console.error(error)
@@ -70,6 +72,13 @@ function startLogin() {
   )
 
 }
+
+// Logout user
+function logout() {
+  // TODO
+  userinfo = {}
+}
+
 // -- Cookies -- //
 function getCookie(cname) {
   var name = cname + "=";
@@ -108,6 +117,7 @@ function checkSession() {
     userinfo.token = tempuser_json.token
     host = tempuser_json.host
     params += ', Token="' + userinfo["token"] + '"';
+    showToast("Welcome, " + userinfo.name)
     return true
   }
   else {

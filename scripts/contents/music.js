@@ -1,10 +1,10 @@
 function getMusicCard(item) {
-    var show_html =
-        "<img id='" + item.Id +
-        "' src='" + host + "/Items/" + item.Id + "/Images/Primary'" +
-        "class='img_items' width=180 height=180 onClick='startMusic(`" + item.Id + "`)'</img>"
-
-    return show_html
+    var music_html =
+    "<div id='" + item.Id + "' class='item' onClick='startMusic(this.id)'>" +
+        "<img src='" + host + "/Items/" + item.Id + "/Images/Primary' width=180 height=180>" +
+        "<div class='text'>" + item.Name + "</div>" +
+    "</div>"
+    return music_html
 }
 
 function loadMusic(library_id) {

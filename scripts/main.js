@@ -27,11 +27,15 @@ function loadJSON(path, type, success, error) {
   xhr.onreadystatechange = function () {
     if (xhr.readyState === XMLHttpRequest.DONE) {
       if (xhr.status === 200) {
-        if (success)
+        if (success) {
           success(JSON.parse(xhr.responseText));
-      } else {
-        if (error)
+        }
+      }
+      else {
+        if (error) {
+          showToast("Error:" + error)
           error(xhr);
+        }
       }
     }
   };
@@ -43,10 +47,10 @@ function loadJSON(path, type, success, error) {
 
 // -- Hash (router) -- //
 function changetab() {
-  let hash = window.location.hash.substring(1);
+  var hash = window.location.hash.substring(1);
   // Choose tab not hidden (currently active)
-  let old_tab = document.querySelector(".tab:not(.is-hidden)")
-  let new_tab = document.getElementById(hash);
+  var old_tab = document.querySelector(".tab:not(.is-hidden)")
+  var new_tab = document.getElementById(hash);
   if (!new_tab) {
     console.error("Error while loading " + hash + ", that tab doesn't exist")
   }

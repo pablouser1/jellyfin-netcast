@@ -1,7 +1,27 @@
 var library = {}
 
+function getLibraryCard(i) {
+  var item = library[i]
+  var library_html =
+  "<div class='item' onclick='loadContent(" + i + ")'>" +
+      "<img src='" + host + "/Items/" + item.Id + "/Images/Primary'" +
+          "width=355 height=200</img>" +
+      "<div class='text'>" + item.Name + "</div>" +
+  "</div>"
+  return library_html
+}
+
+function getRecentCard(item) {
+  var recent_html =
+  "<div id='" + item.Id + "' class='item' onclick='startVideo(this.id)'>" +
+    "<img src='" + host + "/Items/" + item.Id + "/Images/Primary' width=355 height=200</img>" +
+    "<div class='text'>" + item.SeriesName + " - " + item.Name + "</div>" +
+  "</div>"
+  return recent_html
+}
+
 function prepareLibrary() {
-  $("#topnav").show();
+  $("#navbar").show();
   showLibrary()
   showRecent()
 }
@@ -12,9 +32,7 @@ function showLibrary() {
     function (data) {
       library = data.Items
       for (i = 0; i < data.Items.length; i++) {
-        console.log(i + " " + data.Items[i].Name);
-        $(content_table).find("tbody").append("<td><img id='" + data.Items[i].UserData.Key + "' class='img_items' src='" + host + "/Items/" + data.Items[i].Id + "/Images/Primary' width=355 height=200 onClick='loadContent(" + i + ");'</td>");
-        $(content_table).find("tfoot").append("<td>" + data.Items[i].Name + "</td>");
+        document.getElementById("library").insertAdjacentHTML("beforeend", getLibraryCard(i));
       }
     },
     function (xhr) {
@@ -28,9 +46,7 @@ function showRecent() {
   loadJSON(host + "/Users/" + userinfo.id + "/Items?Limit=20&Recursive=true&SortBy=DatePlayed&SortOrder=Descending&Filters=IsResumable", "GET",
     function (data) {
       for (i = 0; i < data.Items.length; i++) {
-        console.log(i + " " + data.Items[i].Name);
-        $("#watching_table").find("tbody").append("<td><img src='" + host + "/Items/" + data.Items[i].Id + "/Images/Primary' width=355 height=200</td>");
-        $("#watching_table").find("tfoot").append("<td>" + data.Items[i].SeriesName + " - " + data.Items[i].Name + "</td>");
+        document.getElementById("watching").insertAdjacentHTML("beforeend", getRecentCard(data.Items[i]));
       }
     },
     function (xhr) {
