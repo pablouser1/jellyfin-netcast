@@ -4,38 +4,38 @@
   display: inline-block;
   cursor: pointer;
   color: white;
-  margin: 10px 10px 10px 10px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  margin-right: 10px;
+  margin-left: 10px;
 }
 
 .items_container .item .text{
   position: absolute;
   width: 100%;
-  opacity: 0.5;
   overflow: hidden;
+  opacity: 0.5;
   background-color: grey;
-  top: 100%;
-  left: 50%;
-  transform: translate(-50%, -100%);
   white-space: nowrap;
   text-overflow: ellipsis;
 }
 
-.items_container .item:hover .text {
-  opacity: 1.0;
+.item:hover {
+  outline: 5px solid #1C6EA4;
+  outline-offset: 0px;
 }
 
 /* Scroll container */
 .items_scroll {
-  overflow-x: scroll;
   overflow-y: hidden;
   white-space: nowrap;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
 }
 
+/*
 .items_scroll::-webkit-scrollbar {
   display: none;
 }
+*/
 
 .items_scroll .item {
   display: inline-block;
@@ -45,15 +45,18 @@
 
 /* HERO BANNER */
 .hero {
+  width: 100%;
+  height: 300px;
   display: block;
   position: relative;
   overflow: hidden;
-  height: 300px;
 }
 
 .hero-image {
-  display: inline-block;
   width: 100%;
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%)
 }
 
 /* Place text in the middle of the image */

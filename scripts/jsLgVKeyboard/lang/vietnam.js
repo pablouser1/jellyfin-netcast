@@ -305,7 +305,6 @@ function changeKeyValue(category) {
  * @return
  */
 function addSpaceText() {
-	console.log("key is clicked");
 	setNewMode(0);
 	var key = document.createElement( 'DIV' );
 	key.innerHTML = " ";

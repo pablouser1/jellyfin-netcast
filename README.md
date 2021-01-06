@@ -13,18 +13,16 @@ You will also need the LG SDK. You can download it [here](http://webostv.develop
 You can check [these](http://webostv.developer.lge.com/discover/netcast/document/) PDFs for the building procedure from the official LG website.
 
 # To do list
-- [ ] Making it work
+- Making it work (Looks like a good objective to me)
 
-Looks like a good objective to me
-
-- [ ] Fallback for blank images
+- Fallback for blank images
   
-- [ ] Optimize
+- Optimize
 
-- [ ] CSS 
+- Better CSS 
 
-- [ ] Cache
+- Better details menu
 
-- [ ] Compability with old Netcast versions
+- Send playback status back to server
 
-- [ ] Compability with regular TV remote 
+- Scroll through items in library

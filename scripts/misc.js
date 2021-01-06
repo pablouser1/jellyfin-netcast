@@ -10,3 +10,24 @@ function showToast(text) {
         snack.className = snack.className.replace("show", "");
     }, 3000);
 }
+var scrollable = false;
+
+function processKeyDown(e) {
+    var keycode;
+    if(window.event) { // IE
+        keycode = e.keyCode;
+    }
+    else if(e.which) { // Netscape/Firefox/Opera You can tell just how old this guide is that they even mention netscape
+        keycode = e.which;
+    }
+    return keycode
+}
+
+function generalEvents(e) {
+    var keycode = processKeyDown(e)
+    switch(keycode) {
+        case VK_BACK:
+            goBack()
+            break;
+    }
+}

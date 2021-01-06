@@ -1,7 +1,6 @@
 body {
   background: #101010;
   color: white;
-  line-height: 1.35;
 }
 
 .splash_img {
@@ -20,8 +19,9 @@ body {
 
 #navbar {
   display: none;
+  height: 50px;
   overflow: hidden;
-  border-radius: 25px;
+  border-radius: 15px;
   background-color: #333;
 }
 

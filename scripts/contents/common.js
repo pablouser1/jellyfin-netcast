@@ -1,3 +1,4 @@
+var selected_item = {}
 function cleanup(type) {
     // Clear HTML from divs
     switch (type) {
@@ -22,4 +23,17 @@ function moveTo(box, direction) {
         var offset = $(el).offset().left
     }
     $(el).animate({scrollLeft: offset}, 800);
+}
+
+function getItemDetails(id) {
+    loadJSON("/Users/" + userinfo.id + "/Items/" + id, "GET",
+    function(data) {
+        selected_item = data
+        document.getElementById("iteminfo").innerHTML = selected_item.Overview
+    },
+    function(error) {
+        showToast(error)
+    }
+    )
+    parent.location.hash = "details"
 }

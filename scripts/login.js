@@ -14,9 +14,10 @@ function checkserver(host, response) {
 }
 
 function checkHost() {
-  host = document.getElementById("host_input").value;
+  var host = document.getElementById("host_input").value;
   checkserver(host, function(res) {
     if (res) {
+      userinfo["host"] = host
       $(".host-box").hide();
       $(".user-box").show();
       showToast("Valid host")
@@ -29,7 +30,7 @@ function checkHost() {
 
 function loginreq(username, passwd, success, error) {
   var xhr = new XMLHttpRequest();
-  xhr.open("POST", host + "/Users/authenticatebyname", true);
+  xhr.open("POST", userinfo.host + "/Users/authenticatebyname", true);
   xhr.setRequestHeader("Content-Type", "application/json");
   xhr.setRequestHeader("X-Emby-Authorization", params);
   xhr.send('{"Username":"' + username + '","Pw":"' + passwd + '"}');
@@ -56,7 +57,6 @@ function startLogin() {
       userinfo["id"] = res.User.Id
       userinfo["name"] = res.User.Name
       userinfo["token"] = res.AccessToken
-      userinfo["host"] = host
       setCookie("login", JSON.stringify(userinfo), 30)
       // Append token to params for all future requests
       params += ', Token="' + userinfo["token"] + '"';
@@ -77,6 +77,7 @@ function startLogin() {
 function logout() {
   // TODO
   userinfo = {}
+  params = default_params
 }
 
 // -- Cookies -- //
@@ -103,6 +104,10 @@ function setCookie(cname, cvalue, exdays) {
   document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
 }
 
+function deletCookie(name) {
+  document.cookie = name +'=; expires=Thu, 01 Jan 1970 00:00:01 GMT;path=/';
+}
+
 // -- Sessions -- //
 
 // Login if there are cookies already
@@ -115,8 +120,8 @@ function checkSession() {
     userinfo.id = tempuser_json.id
     userinfo.name = tempuser_json.name
     userinfo.token = tempuser_json.token
-    host = tempuser_json.host
-    params += ', Token="' + userinfo["token"] + '"';
+    userinfo.host = tempuser_json.host
+    params = default_params + ', Token="' + userinfo["token"] + '"';
     showToast("Welcome, " + userinfo.name)
     return true
   }

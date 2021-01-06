@@ -1,14 +1,14 @@
-var app_version = "1.0.0"
+var app_version = "1.2.0"
 var device = document.getElementById("device");
 
-// TESTS--------------------//
-console.log("Using debugging info");
+// -- TESTS -- //
+// This values are ignored on real TVs
 device.modelName = "Testing";
 device.serialNumber = "apptest";
-//-------------------------------------//
 
 // Default params
-var params = 'Mediabrowser Client="Netcast", Device="' + device.modelName + '", DeviceId="' + device.serialNumber + '", Version="' + app_version;
+var default_params = 'Mediabrowser Client="Netcast", Device="' + device.modelName + '", DeviceId="' + device.serialNumber + '", Version="' + app_version;
+var params = default_params
 console.log("Starting");
 
 var tempuser = checkSession()
@@ -21,28 +21,8 @@ else {
   parent.location.hash = "#login";
 }
 
-// JSON Loading
-function loadJSON(path, type, success, error) {
-  var xhr = new XMLHttpRequest();
-  xhr.onreadystatechange = function () {
-    if (xhr.readyState === XMLHttpRequest.DONE) {
-      if (xhr.status === 200) {
-        if (success) {
-          success(JSON.parse(xhr.responseText));
-        }
-      }
-      else {
-        if (error) {
-          showToast("Error:" + error)
-          error(xhr);
-        }
-      }
-    }
-  };
-  xhr.open(type, path, true);
-  xhr.setRequestHeader("Content-Type", "application/json");
-  xhr.setRequestHeader("X-Emby-Authorization", params);
-  xhr.send();
+function goBack() {
+  window.history.back()
 }
 
 // -- Hash (router) -- //

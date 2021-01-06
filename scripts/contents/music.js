@@ -9,7 +9,7 @@ function getMusicCard(item) {
 
 function loadMusic(library_id) {
     cleanup("music")
-    loadJSON(host + "/Users/" + userinfo.id + "/Items?ParentId=" + library_id + "&SortBy=SortName", "GET",
+    loadJSON("/Users/" + userinfo.id + "/Items?ParentId=" + library_id + "&SortBy=SortName", "GET",
         function (data) {
             var items = data.Items
             for (var i = 0; i < items.length; i++) {
