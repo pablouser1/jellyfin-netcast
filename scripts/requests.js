@@ -3,11 +3,17 @@ function loadJSON(path, type, success, error, data) {
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function () {
         if (xhr.readyState === XMLHttpRequest.DONE) {
-            if (xhr.status === 200) {
+            if (xhr.status === 200 ) {
                 if (success) {
                     success(JSON.parse(xhr.responseText));
                 }
-            } else {
+            }
+            else if (xhr.status === 204) {
+                if (success) {
+                    success("Sent without response body")
+                }
+            }
+            else {
                 if (error) {
                     showToast("Error:" + error)
                     error(xhr);

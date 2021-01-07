@@ -24,6 +24,7 @@
   <script src="scripts/contents/movies.js" type="text/javascript"></script>
   <script src="scripts/contents/music.js" type="text/javascript"></script>
   <script src="scripts/misc.js" type="text/javascript"></script>
+  <script src="scripts/deviceprofile.js" type="text/javascript"></script>
 </head>
 
 <body onload="$('#splashscreen').hide()" onkeydown="generalEvents(event); return false">
@@ -85,18 +86,11 @@
   <div id="shows" class="tab is-hidden items_container"></div>
 
   <!-- TV Show description and seasons -->
-  <div id="show" class="tab is-hidden items_container">
-    <div id="showbanner" class="hero">
-      <img id="heroimg" src="" class="hero-image"/>
-      <div class="hero-text">
-        <h1 id="show_title"></h1>
-      </div>
-    </div> 
-    <div>
-      <h3>About show:</h3>
-      <p id="showinfo"></p>
-    </div>
-    <div id="seasons"></div>
+  <div id="show" class="tab is-hidden">
+    <h1 id="show_title"></h1>
+    <h3>About show:</h3>
+    <p id="showinfo"></p>
+    <div id="seasons" class="items_container"></div>
     <div id="similar"></div>
   </div>
   <!-- TV Shows episodes -->
@@ -106,10 +100,17 @@
 
   <div id="details" class="tab is-hidden items_container">
     <div>
+      <h1 id="itemname"></h1>
       <h3>About:</h3>
       <p id="iteminfo"></p>
     </div>
-    <input type="button" value="Watch" onclick="startVideo()"/>
+    <div id="stream_details">
+      <select id="stream_container" onchange="swapContainers()"></select>
+      <select id="stream_video"></select>
+      <select id="stream_audio"></select>
+      <select id="stream_subtitle"></select>
+    </div>
+    <input type="button" value="Watch" onclick="getPlaybackInfo()"/>
   </div>
 
   <div id="music" class="tab is-hidden items_container"></div>
@@ -120,8 +121,10 @@
       <p class="progress-container">
         <progress id='progress-bar' min='0' max='100' value='0'></progress>
       </p>
+      <button onclick='video.rewind();'>Rewind</button>
       <button id='play-pause-button' onclick='togglePlayPause();'>❙❙</button>
-      <button id='stop-button' onclick='stopPlayer();'>Stop</button>
+      <button onclick='stopPlayer();'>Stop</button>
+      <button onclick='video.fastForward();'>Fast Forward</button>
     </div>
   </div>
   <script src="scripts/player.js" type="text/javascript"></script>

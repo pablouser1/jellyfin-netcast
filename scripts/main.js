@@ -1,4 +1,4 @@
-var app_version = "1.2.0"
+var app_version = "1.3.0"
 var device = document.getElementById("device");
 
 // -- TESTS -- //

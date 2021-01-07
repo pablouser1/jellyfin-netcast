@@ -75,9 +75,9 @@ function startLogin() {
 
 // Logout user
 function logout() {
-  // TODO
-  userinfo = {}
-  params = default_params
+  loadJSON("/Sessions/logout", "POST")
+  deleteCookie("login")
+  location.reload()
 }
 
 // -- Cookies -- //
@@ -104,7 +104,7 @@ function setCookie(cname, cvalue, exdays) {
   document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
 }
 
-function deletCookie(name) {
+function deleteCookie(name) {
   document.cookie = name +'=; expires=Thu, 01 Jan 1970 00:00:01 GMT;path=/';
 }
 

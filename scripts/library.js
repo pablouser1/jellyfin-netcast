@@ -12,7 +12,7 @@ function getLibraryCard(i) {
 
 function getRecentCard(item) {
   var recent_html =
-    "<div id='" + item.Id + "' class='item' onclick='startVideo(this.id)'>" +
+    "<div id='" + item.Id + "' class='item' onclick='getItemDetails(this.id)'>" +
       "<img src='" + userinfo.host + "/Items/" + item.Id + "/Images/Primary' width=355 height=200>" +
       "<div class='text'>" + item.SeriesName + " - " + item.Name + "</div>" +
     "</div>"
@@ -20,6 +20,7 @@ function getRecentCard(item) {
 }
 
 function prepareLibrary() {
+  sendDeviceProfile()
   $("#navbar").show();
   showLibrary()
   showRecent()

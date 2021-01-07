@@ -10,7 +10,16 @@ function showToast(text) {
         snack.className = snack.className.replace("show", "");
     }, 3000);
 }
-var scrollable = false;
+
+function sendDeviceProfile() {
+    loadJSON("/Sessions/Capabilities/Full", "POST",
+    function (data) {
+        console.log(data)
+    },
+    function (error) {
+        console.log(error)
+    }, JSON.stringify(device_profile))
+}
 
 function processKeyDown(e) {
     var keycode;

@@ -3,7 +3,7 @@ var shows = {}
 function getShowCard(i) {
     var item = shows[i]
     var show_html =
-        "<div tabindex='" + i + "' class='item' onClick='loadShow(" + i + ")'>" +
+        "<div class='item' onClick='loadShow(" + i + ")'>" +
             "<img src='" + userinfo.host + "/Items/" + item.Id + "/Images/Primary' width=180 height=270>" +
             "<div class='text'>" + item.Name + "</div>" +
         "</div>"
@@ -56,10 +56,6 @@ function getShowInfo(i) {
     var show = shows[i]
     loadJSON("/Users/" + userinfo.id + "/Items/" + show.Id, "GET",
         function (data) {
-            // -- BANNER -- //
-            var banner_img = userinfo.host + "/Items/" + data.Id + "/Images/Primary?maxWidth=1920&tag=" + data.ImageTags.Banner + "&quality=90"
-            document.getElementById("heroimg").src = banner_img
-
             // Info
             document.getElementById("show_title").innerHTML = data.Name
             document.getElementById("showinfo").innerHTML = data.Overview
