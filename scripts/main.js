@@ -9,13 +9,32 @@ device.serialNumber = "apptest";
 // Default params
 var default_params = 'Mediabrowser Client="Netcast", Device="' + device.modelName + '", DeviceId="' + device.serialNumber + '", Version="' + app_version;
 var params = default_params
-console.log("Starting");
+
+function toggleNavbar() {
+  document.getElementById("navbar").classList.toggle("is-hidden")
+}
+
+// Start when document loads
+function initApp() {
+  // Hide splashscreen
+  document.getElementById("splashscreen").classList.add("is-hidden")
+  console.log("Starting app...");
+}
+
+// Start main components once logged in
+function startApp() {
+  toggleNavbar()
+  startWebSocket()
+  sendDeviceProfile()
+  startSpatialNav()
+}
 
 var tempuser = checkSession()
 if (tempuser) {
   console.log("Already logged in")
-  parent.location.hash = "#mainmenu";
+  startApp();
   prepareLibrary();
+  parent.location.hash = "#home";
 }
 else {
   parent.location.hash = "#login";
@@ -35,9 +54,14 @@ function changetab() {
     console.error("Error while loading " + hash + ", that tab doesn't exist")
   }
   else {
-    old_tab.classList.add("is-hidden")
+    if (old_tab) {
+      old_tab.classList.add("is-hidden")
+    }
     new_tab.classList.remove("is-hidden")
   }
+
+  // Focus the first navigable element.
+  SpatialNavigation.focus();
 }
 
 window.addEventListener("hashchange", changetab)

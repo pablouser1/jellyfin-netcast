@@ -18,8 +18,8 @@ function checkHost() {
   checkserver(host, function(res) {
     if (res) {
       userinfo["host"] = host
-      $(".host-box").hide();
-      $(".user-box").show();
+      document.getElementById("host-box").classList.add("is-hidden")
+      document.getElementById("host-box").classList.remove("is-hidden")
       showToast("Valid host")
     }
     else {
@@ -62,8 +62,9 @@ function startLogin() {
       params += ', Token="' + userinfo["token"] + '"';
       console.log("Userinfo:")
       console.log(userinfo)
+      startApp()
       prepareLibrary();
-      parent.location.hash = "#mainmenu";
+      parent.location.hash = "#home";
       showToast("Loggedin successfully")
     },
     function(error) {

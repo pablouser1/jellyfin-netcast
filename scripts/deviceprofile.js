@@ -40,11 +40,12 @@ var device_profile = {
             "Type": "Video",
             "VideoCodec": "h264",
             "AudioCodec": "ac3,aac,mp3",
+            "Context": "Streaming",
+            "Protocol": "hls",
             "EstimateContentLength": false,
             "EnableMpegtsM2TsMode": false,
             "TranscodeSeekInfo": "Auto",
             "CopyTimestamps": false,
-            "Context": "Streaming",
             "EnableSubtitlesInManifest": false,
             "MinSegments": 0,
             "SegmentLength": 0,
@@ -91,7 +92,7 @@ var device_profile = {
             }, {
                 "Condition": "LessThanEqual",
                 "Property": "VideoFramerate",
-                "Value": "30",
+                "Value": "60",
                 "IsRequired": true
             }],
             "ApplyConditions": [],
@@ -111,8 +112,8 @@ var device_profile = {
             }, {
                 "Condition": "LessThanEqual",
                 "Property": "VideoLevel",
-                "Value": "41",
-                "IsRequired": true
+                "Value": "42",
+                "IsRequired": false
             }],
             "ApplyConditions": [],
             "Codec": "h264"
@@ -147,6 +148,6 @@ var device_profile = {
         }]
     },
     "PlayableMediaTypes": ["Audio", "Video", "Photo"],
-    "SupportsMediaControl": false, // Need web sockets for that
+    "SupportsMediaControl": false, // TODO, config web socket for media control
     "SupportsPersistentIdentifier": false
 }

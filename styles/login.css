@@ -1,4 +1,4 @@
-.host-box {
+#host-box {
   width: 320px;
   height: 420px;
   background: #000;
@@ -12,7 +12,7 @@
   padding: 70px 30px;
 }
 
-.host-box .avatar {
+#host-box .avatar {
   width: 100px;
   height: 100px;
   border-radius: 50%;
@@ -22,26 +22,26 @@
   left: -webkit-calc(50% - 50px);
 }
 
-.host-box h1 {
+#host-box h1 {
   margin: 0;
   padding: 0 0 20px;
   text-align: center;
   font-size: 22px;
 }
 
-.host-box label {
+#host-box label {
   margin: 0;
   padding: 0;
   font-weight: bold;
   display: block;
 }
 
-.host-box input {
+#host-box input {
   width: 100%;
   margin-bottom: 20px;
 }
 
-.host-box input[type="text"] {
+#host-box input[type="text"] {
   border: none;
   border-bottom: 1px solid #fff;
   background: transparent;
@@ -51,7 +51,7 @@
   font-size: 16px;
 }
 
-.host-box input[type="button"] {
+#host-box input[type="button"] {
   border: none;
   outline: none;
   height: 40px;
@@ -61,18 +61,18 @@
   border-radius: 20px;
 }
 
-.host-box a {
+#host-box a {
   text-decoration: none;
   font-size: 12px;
   line-height: 20px;
   color: darkgrey;
 }
 
-.host-box a:hover {
+#host-box a:hover {
   color: #fff;
 }
 
-.user-box {
+#user-box {
   display: none;
   width: 320px;
   height: 420px;
@@ -87,7 +87,7 @@
   padding: 70px 30px;
 }
 
-.user-box .avatar {
+#user-box .avatar {
   width: 100px;
   height: 100px;
   border-radius: 50%;
@@ -97,26 +97,26 @@
   left: -webkit-calc(50% - 50px);
 }
 
-.user-box h1 {
+#user-box h1 {
   margin: 0;
   padding: 0 0 20px;
   text-align: center;
   font-size: 22px;
 }
 
-.user-box label {
+#user-box label {
   margin: 0;
   padding: 0;
   font-weight: bold;
   display: block;
 }
 
-.user-box input {
+#user-box input {
   width: 100%;
   margin-bottom: 20px;
 }
 
-.user-box input[type="text"], .user-box input[type="password"] {
+#user-box input[type="text"], #user-box input[type="password"] {
   border: none;
   border-bottom: 1px solid #fff;
   background: transparent;
@@ -126,7 +126,7 @@
   font-size: 16px;
 }
 
-.user-box input[type="button"] {
+#user-box input[type="button"] {
   border: none;
   outline: none;
   height: 40px;
@@ -136,13 +136,13 @@
   border-radius: 20px;
 }
 
-.user-box a {
+#user-box a {
   text-decoration: none;
   font-size: 12px;
   line-height: 20px;
   color: darkgrey;
 }
 
-.user-box a:hover {
+#user-box a:hover {
   color: #fff;
 }

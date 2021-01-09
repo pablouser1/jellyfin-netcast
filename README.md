@@ -23,6 +23,7 @@ You can check [these](http://webostv.developer.lge.com/discover/netcast/document
 
 - Better details menu
 
-- Send playback status back to server
+# Credits
+This project wouldn't be possible without the help of the following projects:
 
-- Scroll through items in library
+- Spatial Navigation (MPL 2.0)[https://github.com/luke-chang/js-spatial-navigation/blob/master/LICENSE]

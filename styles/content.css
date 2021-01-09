@@ -1,5 +1,6 @@
 /* Normal container (do not overflow-x) */
 .items_container {
+  height:100%;
   text-align: center;
 }
 
@@ -8,12 +9,6 @@
   overflow-y: hidden;
   white-space: nowrap;
 }
-
-/*
-.items_scroll::-webkit-scrollbar {
-  display: none;
-}
-*/
 
 .item {
   position: relative;
@@ -35,7 +30,6 @@
   text-overflow: ellipsis;
 }
 
-.item:hover {
-  outline: 5px solid #1C6EA4;
-  outline-offset: 0px;
+.item:hover, .item:focus {
+  outline: 6px solid #1C6EA4;
 }

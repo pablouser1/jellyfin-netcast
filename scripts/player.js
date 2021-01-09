@@ -8,10 +8,11 @@ var playback = {
 }
 
 function getPlaybackInfo() {
-   var mediaSourceIndex = $("#stream_container").val()
+   // Clear code
+   var mediaSourceIndex = document.getElementById("stream_container").value
    var mediaSourceId = selected_item.MediaSources[mediaSourceIndex].Id
-   var audioIndex = ($("#stream_audio").val() ? $("#stream_audio").val() : -1)
-   var subtitleIndex = ($("#stream_subtitle").val() ? $("#stream_subtitle").val() : -1)
+   var audioIndex = (document.getElementById("stream_audio").value ? document.getElementById("stream_audio").value : -1)
+   var subtitleIndex = (document.getElementById("stream_subtitle").value ? document.getElementById("stream_subtitle").value : -1)
    loadJSON("/Items/" + selected_item.Id + "/PlaybackInfo?UserId=" + userinfo.id + "&MediaSourceId=" + mediaSourceId + "&IsPlayback=true&AutoOpenLiveStream=true&StartTimeTicks=" + /* TODO, GET START TIME TICKS */ "0" + "&AudioStreamIndex=" + audioIndex + "&SubtitleStreamIndex=" + subtitleIndex + "&MaxStreamingBitrate=59786477", "POST",
    function(data) {
       // Choose between methods
@@ -22,14 +23,9 @@ function getPlaybackInfo() {
          playback.localinfo.url = userinfo.host + "/Videos/" + mediaSource.Id + "/stream." + mediaSource.Container + "?static=true&mediaSourceId=" + selected_item.MediaSources[0].Id + "&deviceId=" + device.serialNumber + "&api_key=" + userinfo.token + "&Tag=" + mediaSource.ETag
       }
       // Direct stream
-      else if (mediaSource.SupportsDirectStream) {
-         playback.localinfo.playMethod = "DirectStream"
-         playback.localinfo.url = "" // TODO
-      }
-      // Transcoding
       else {
          playback.localinfo.playMethod = "Transcode"
-         playback.localinfo.url = mediaSource.TranscodingUrl
+         playback.localinfo.url = userinfo.host + mediaSource.TranscodingUrl
       }
       // Set currentState
       playback.currentState = {
@@ -57,7 +53,7 @@ function startVideo() {
    video.width = selected_item.Width
    video.height = selected_item.Height
    parent.location.hash = "#player";
-   $("#navbar").hide();
+   toggleNavbar()
    video.data = playback.localinfo.url;
    video.play();
    video.onPlayStateChange = processPlayState;
@@ -94,17 +90,15 @@ function stopPlayer() {
    notifyStopPlaying()
    // Reset values
    video.onPlayStateChange = undefined
-   video.pause();
-   video.currentTime = 0;
-   video.data = ''
    clearInterval(progressInterval)
    clearInterval(playingInterval)
+   video.stop();
    playback = {
       localinfo: {},
       currentState: {}
    }
    goBack()
-   $("#navbar").show();
+   toggleNavbar()
 }
 
 // Update progress bar every 1 second
@@ -123,7 +117,7 @@ function notifyPlaying() {
       console.log("Notification sent to server successfully")
    },
    function (error) {
-      console.log(error)
+      showToast("There was an error sending play notification:" + error.response)
    }, JSON.stringify(playback.currentState))
 }
 
@@ -133,7 +127,7 @@ function notifyProgress(reason) {
    if (video.speed === 0) {
       playback.currentState.IsPaused = true
    }
-   // Convert to ticks
+   // Convert from ms to ticks
    var current_ticks = video.playPosition * 1e4
    // Set
    playback.currentState.PositionTicks = current_ticks
@@ -142,7 +136,7 @@ function notifyProgress(reason) {
       console.log("Notification sent to server successfully")
    },
    function (error) {
-      console.log(error)
+      showToast("There was an error while sending progress:" + error.response)
    }, JSON.stringify(playback.currentState))
 }
 

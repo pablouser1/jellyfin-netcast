@@ -1,29 +1,8 @@
 // Selected item, ready to be played
 var selected_item = {}
-function cleanup(type) {
-    // Clear HTML from divs
-    switch (type) {
-        case "movies":
-        case "shows":
-        case "showinfo":
-        case "seasons":
-        case "episodes":
-        case "music":
-            document.getElementById(type).innerHTML = ""
-            break
-    }
-}
 
-// Scroll left or right
-function moveTo(box, direction) {
-    var el = '#' + box
-    if (direction == "left") {
-        var offset = -$(el).offset().left
-    }
-    else {
-        var offset = $(el).offset().left
-    }
-    $(el).animate({scrollLeft: offset}, 800);
+function getPrimaryImage(id) {
+    return (userinfo.host + "/Items/" + id + "/Images/Primary")
 }
 
 function getItemDetails(id) {
@@ -76,7 +55,7 @@ function getItemDetails(id) {
 }
 
 function swapContainers() {
-    var container = $("#stream_container").val();
+    var container = document.getElementById("stream_container").value
     var mediaStreams = selected_item.MediaSources[container].streams
     if (mediaStreams.Video) {
         console.log("Loading videos")
@@ -104,7 +83,7 @@ function loopStreams(streams, container) {
 function createOption(text, value, container) {
     // Create options
     var o = new Option(text, value);
-    /// jquerify the DOM object 'o' so we can use the html method
-    $(o).html(text);
-    $(container).append(o);
+    /// jquerify the DOM object 'o' so we can use the html method+
+    o.innerHTML = text
+    document.getElementById(container).append(o)
 }
