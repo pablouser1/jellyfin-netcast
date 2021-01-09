@@ -26,4 +26,4 @@ You can check [these](http://webostv.developer.lge.com/discover/netcast/document
 # Credits
 This project wouldn't be possible without the help of the following projects:
 
-- Spatial Navigation (MPL 2.0)[https://github.com/luke-chang/js-spatial-navigation/blob/master/LICENSE]
+- Spatial Navigation [(MPL 2.0 LICENSE)](https://github.com/luke-chang/js-spatial-navigation/blob/master/LICENSE)
