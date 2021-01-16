@@ -1,4 +1,6 @@
-// Device profile
+/**
+ * Device profile of LG Smart TVs used by Jellyfin
+ */
 var device_profile = {
     "DeviceProfile": {
         "MaxStreamingBitrate": 120000000, // TODO
@@ -148,6 +150,33 @@ var device_profile = {
         }]
     },
     "PlayableMediaTypes": ["Audio", "Video", "Photo"],
-    "SupportsMediaControl": false, // TODO, config web socket for media control
+    "SupportedCommands": [
+        "MoveUp",
+        "MoveDown",
+        "MoveLeft",
+        "MoveRight",
+        "PageUp",
+        "PageDown",
+        "PreviousLetter",
+        "NextLetter",
+        "ToggleOsd",
+        "Select",
+        "Back",
+        "SendKey",
+        "SendString",
+        "GoHome",
+        "SetAudioStreamIndex",
+        "SetSubtitleStreamIndex",
+        "DisplayContent",
+        "GoToSearch",
+        "DisplayMessage",
+        "SetRepeatMode",
+        "SetShuffleQueue",
+        "ChannelUp",
+        "ChannelDown",
+        "PlayMediaSource",
+        "PlayTrailers"
+    ],
+    "SupportsMediaControl": true,
     "SupportsPersistentIdentifier": false
 }

@@ -1,4 +1,11 @@
-// JSON Loading
+/**
+ * Get JSON from server
+ * @param {string} path Request path
+ * @param {string} type Request type (GET, POST, PUT, DELETE)
+ * @param {function} success Function when request works
+ * @param {function} error Function when request fails
+ * @param {string} data JSON-encoded data body (optional, only when using POST)
+ */
 function loadJSON(path, type, success, error, data) {
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function () {

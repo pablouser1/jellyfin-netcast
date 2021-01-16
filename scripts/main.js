@@ -14,11 +14,22 @@ function toggleNavbar() {
   document.getElementById("navbar").classList.toggle("is-hidden")
 }
 
+/* Set the width of the side navigation to 250px */
+function openDrawer() {
+  document.getElementById("sideNav").style.width = "250px";
+}
+
+/* Set the width of the side navigation to 0 */
+function closeDrawer() {
+  document.getElementById("sideNav").style.width = "0";
+}
+
 // Start when document loads
 function initApp() {
   // Hide splashscreen
   document.getElementById("splashscreen").classList.add("is-hidden")
-  console.log("Starting app...");
+  changetab()
+  console.log("Finished loading");
 }
 
 // Start main components once logged in
@@ -65,4 +76,3 @@ function changetab() {
 }
 
 window.addEventListener("hashchange", changetab)
-changetab()

@@ -1,9 +1,14 @@
 var shows = {}
 
+/**
+ * Generate HTML show card
+ * @param {number} i Index of show
+ * @returns {string} HTML string of show card
+ */
 function getShowCard(i) {
     var item = shows[i]
     var show_html =
-        "<div class='item' onClick='loadShow(" + i + ")' tabindex='-1'>" +
+        "<div id='" + item.Id + "' class='item' onClick='loadShow(this.id)' tabindex='-1'>" +
             "<img src='" + getPrimaryImage(item.Id) + "' width=180 height=270>" +
             "<div class='text'>" + item.Name + "</div>" +
         "</div>"
@@ -12,7 +17,7 @@ function getShowCard(i) {
 
 function getSeasonCard(item) {
     var season_html =
-        "<div id='" + item.Id + "'  class='item' onClick='loadEpisodes(this.id)' tabindex='-1'>" +
+        "<div id='" + item.Id + "' class='item' onClick='loadEpisodes(this.id)' tabindex='-1'>" +
             "<img src='" + getPrimaryImage(item.SeriesId) + "' width=180 height=270>" +
             "<div class='text'>" + item.Name + "</div>" +
         "</div>"
@@ -21,7 +26,7 @@ function getSeasonCard(item) {
 
 function getEpisodeCard(item) {
     var episode_html =
-        "<div id='" + item.Id + "'  class='item' onClick='getItemDetails(this.id)' tabindex='-1'>" +
+        "<div id='" + item.Id + "' class='item' onClick='getItemDetails(this.id)' tabindex='-1'>" +
             "<img src='" + getPrimaryImage(item.Id) + "' width=400 height=225>" +
             "<div class='text'>" + item.Name + "</div>" +
         "</div>"
@@ -37,7 +42,7 @@ function loadTVShows(library_id) {
                 shows_html += getShowCard(i)
             }
             document.getElementById("shows").innerHTML = shows_html
-            parent.location.hash = "#shows";
+            parent.location.hash = "shows";
         },
         function (xhr) {
             showToast(xhr.response)
@@ -45,16 +50,18 @@ function loadTVShows(library_id) {
     );
 }
 
-function loadShow(i) {
-    getShowInfo(i)
-    loadSeasons(i)
-    parent.location.hash = "#show";
+function loadShow(id) {
+    getShowInfo(id)
+    loadSeasons(id)
+    parent.location.hash = "show";
 }
 
-function getShowInfo(i) {
-    var show = shows[i]
-    loadJSON("/Users/" + userinfo.id + "/Items/" + show.Id, "GET",
+function getShowInfo(id) {
+    loadJSON("/Users/" + userinfo.id + "/Items/" + id, "GET",
         function (data) {
+            // -- BANNER -- //
+            var banner_img = getPrimaryImage(data.Id)
+            document.getElementById("heroimg").src = banner_img
             // Info
             document.getElementById("show_title").innerHTML = data.Name
             document.getElementById("showinfo").innerHTML = data.Overview
@@ -65,9 +72,8 @@ function getShowInfo(i) {
     );
 }
 
-function loadSeasons(i) {
-    var show = shows[i]
-    loadJSON("/Shows/" + show.Id + "/Seasons?userid=" + userinfo.id, "GET",
+function loadSeasons(id) {
+    loadJSON("/Shows/" + id + "/Seasons?userid=" + userinfo.id, "GET",
         function (data) {
             var items = data.Items
             var seasons_html = ""
@@ -96,5 +102,5 @@ function loadEpisodes(content_id) {
             showToast(xhr.response)
         }
     );
-    parent.location.hash = "#episodes";
+    parent.location.hash = "episodes";
 }

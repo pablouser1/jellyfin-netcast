@@ -45,11 +45,13 @@ function showRecent() {
   //Get all continue watching and display them, with their respective image.
   loadJSON("/Users/" + userinfo.id + "/Items?Limit=20&Recursive=true&SortBy=DatePlayed&SortOrder=Descending&Filters=IsResumable", "GET",
     function (data) {
-      var watching_html = ""
-      for (i = 0; i < data.Items.length; i++) {
-        watching_html += getRecentCard(data.Items[i])
+      if (data.Items) {
+        var watching_html = ""
+        for (i = 0; i < data.Items.length; i++) {
+          watching_html += getRecentCard(data.Items[i])
+        }
+        document.getElementById("watching").innerHTML = watching_html
       }
-      document.getElementById("watching").innerHTML = watching_html
     },
     function (xhr) {
       console.error(xhr);

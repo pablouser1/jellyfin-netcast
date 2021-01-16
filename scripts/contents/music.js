@@ -16,7 +16,7 @@ function loadMusic(library_id) {
                 music_html += getMusicCard(items[i])
             }
             document.getElementById("music").innerHTML = music_html
-            parent.location.hash = "#music";
+            parent.location.hash = "music";
         },
         function (xhr) {
             console.error(xhr);

@@ -1,12 +1,13 @@
 /* Normal container (do not overflow-x) */
 .items_container {
-  height:100%;
+  height: 100%;
+  overflow-y: hidden;
   text-align: center;
 }
 
 /* Scroll container */
 .items_scroll {
-  overflow-y: hidden;
+  overflow-x: hidden;
   white-space: nowrap;
 }
 
@@ -30,6 +31,34 @@
   text-overflow: ellipsis;
 }
 
-.item:hover, .item:focus {
+.item:focus {
   outline: 6px solid #1C6EA4;
+}
+
+/* HERO BANNER */
+.hero {
+  width: 100%;
+  height: 300px;
+  display: block;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-image {
+  width: 100%;
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+}
+
+/* Place text in the middle of the image */
+.hero-text {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  color: black;
 }

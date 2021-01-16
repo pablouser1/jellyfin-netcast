@@ -1,3 +1,7 @@
+/**
+ * Show message
+ * @param {string} text Message text
+ */
 function showToast(text) {
     // Get the snackbar DIV
     var snack = document.getElementById("snackbar");
@@ -11,6 +15,9 @@ function showToast(text) {
     }, 3000);
 }
 
+/**
+ * Send device profile to server
+ */
 function sendDeviceProfile() {
     loadJSON("/Sessions/Capabilities/Full", "POST",
     function (data) {
@@ -32,19 +39,8 @@ function processKeyDown(e) {
     return keycode
 }
 
-function startWebSocket() {
-    var socketURL = userinfo.host.replace(/(http)(s)?\:\/\//, "ws$2://");
-    var socket = new WebSocket(socketURL + "/socket?api_key=" + userinfo.token + "&deviceId=" + device.serialNumber)
-    // Log messages from the server
-    socket.onmessage = function (e) {
-        var message = JSON.parse(e.data)
-        console.log(message)
-    };
-}
-
 function startSpatialNav() {
     SpatialNavigation.init();
-
     // Define navigable elements
     SpatialNavigation.add({
       selector: '.item',

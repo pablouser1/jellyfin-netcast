@@ -1,7 +1,11 @@
 var userinfo = {}
 
+/**
+ * Ping server chosen
+ * @param {string} host URL
+ * @param {function} response Response
+ */
 function checkserver(host, response) {
-
   // A ping, kinda. Just to make sure that the server is alive
   var xhttp = new XMLHttpRequest();
   xhttp.open("GET", host + "/Users/Public", true);
@@ -19,7 +23,7 @@ function checkHost() {
     if (res) {
       userinfo["host"] = host
       document.getElementById("host-box").classList.add("is-hidden")
-      document.getElementById("host-box").classList.remove("is-hidden")
+      document.getElementById("user-box").classList.remove("is-hidden")
       showToast("Valid host")
     }
     else {
@@ -81,7 +85,11 @@ function logout() {
   location.reload()
 }
 
-// -- Cookies -- //
+/**
+ * Get document cookie
+ * @param {string} cname Cookie Name
+ * @returns {string} Cookie data
+ */
 function getCookie(cname) {
   var name = cname + "=";
   var decodedCookie = decodeURIComponent(document.cookie);
@@ -98,6 +106,12 @@ function getCookie(cname) {
   return "";
 }
 
+/**
+ * Set document cookie
+ * @param {string} cname Cookie Name
+ * @param {string} cvalue Cookie Value
+ * @param {number} exdays Days before expiring
+ */
 function setCookie(cname, cvalue, exdays) {
   var d = new Date();
   d.setTime(d.getTime() + (exdays*24*60*60*1000));
@@ -105,6 +119,10 @@ function setCookie(cname, cvalue, exdays) {
   document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
 }
 
+/**
+ * Remove cookie
+ * @param {string} cname Cookie Name
+ */
 function deleteCookie(name) {
   document.cookie = name +'=; expires=Thu, 01 Jan 1970 00:00:01 GMT;path=/';
 }

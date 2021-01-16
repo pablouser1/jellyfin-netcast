@@ -1,1 +1,0 @@
-var voice = document.getElementById("voice");
