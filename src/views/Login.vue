@@ -1,0 +1,95 @@
+<template>
+  <section id="login">
+    <HostBox @valid-host="this.isHostValid = true" v-if="!isHostValid" />
+    <UserBox v-else />
+  </section>
+</template>
+
+<script>
+import HostBox from '../components/Login/HostBox.vue'
+import UserBox from '../components/Login/UserBox.vue'
+export default {
+  name: 'Login',
+  data () {
+    return {
+      isHostValid: false
+    }
+  },
+  components: { HostBox, UserBox }
+}
+</script>
+
+<style lang="scss">
+#host-box, #user-box {
+  width: 320px;
+  height: 420px;
+  background: #000;
+  color: #fff;
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  box-sizing: border-box;
+  padding: 70px 30px;
+
+  .avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    position: absolute;
+    top: -50px;
+    left: calc(50% - 50px);
+  }
+
+  h1 {
+    margin: 0;
+    padding: 0 0 20px;
+    text-align: center;
+    font-size: 22px;
+  }
+
+  label {
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+    display: block;
+  }
+
+  input {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  input[type="text"] {
+    border: none;
+    border-bottom: 1px solid #fff;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    color: #fff;
+    font-size: 16px;
+  }
+
+  button {
+    border: none;
+    outline: none;
+    height: 40px;
+    background: #00a4dc;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 20px;
+  }
+
+  a {
+    text-decoration: none;
+    font-size: 12px;
+    line-height: 20px;
+    color: darkgrey;
+
+    &:hover {
+      color: #fff;
+    }
+  }
+}
+
+</style>

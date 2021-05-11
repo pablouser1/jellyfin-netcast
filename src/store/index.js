@@ -4,12 +4,21 @@ import { createStore } from 'vuex'
 const store = createStore({
   state () {
     return {
-      count: 0
+      host: '',
+      user: {
+        id: '',
+        name: '',
+        token: ''
+      }
     }
   },
   mutations: {
-    increment (state) {
-      state.count++
+    setHost (state, host) {
+      state.host = host
+    },
+
+    setUser (state, user) {
+      state.user = user
     }
   }
 })
