@@ -1,8 +1,19 @@
-# jellyfin-netcast
-An unofficial Client for LG Smart TVs running Netcast
-
-# Building
+# Jellyfin Netcast
 **This project is still under heavy development and unusable at the moment.**
+
+An unofficial Client for LG Smart TVs running Netcast
+This branch is in development, for a (kinda) usable version check [this](https://github.com/pablouser1/jellyfin-netcast/tree/legacy).
+
+## Build
+### Compiles and hot-reloads for development
+```
+yarn dev
+```
+
+### Compiles and minifies for production. Also adds legacy installation (useful for our Netcast Browser)
+```
+yarn build
+```
 
 In order to use this app on your TV you need to follow this instructions:
 
@@ -12,18 +23,8 @@ You will also need the LG SDK. You can download it [here](http://webostv.develop
 
 You can check [these](http://webostv.developer.lge.com/discover/netcast/document/) PDFs for the building procedure from the official LG website.
 
-# To do list
-- Making it work (Looks like a good objective to me)
-
-- Fallback for blank images
-  
-- Optimize
-
-- Better CSS 
-
-- Better details menu
-
 # Credits
 This project wouldn't be possible without the help of the following projects:
 
-- Spatial Navigation [(MPL 2.0 LICENSE)](https://github.com/luke-chang/js-spatial-navigation/blob/master/LICENSE)
+- Spatial Navigation - [(MPL 2.0 LICENSE)](https://github.com/luke-chang/js-spatial-navigation/blob/master/LICENSE)
+- Fetch Polyfill - [(MIT LICENSE)](https://github.com/github/fetch/blob/master/LICENSE)
