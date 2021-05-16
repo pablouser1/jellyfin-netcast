@@ -1,7 +1,6 @@
 import requests, { addToken } from './api'
 import Cookies from '../helpers/Cookies'
 import store from '../store'
-import Misc from './Misc'
 
 export default class Auth {
   static checkSession () {
@@ -9,8 +8,8 @@ export default class Auth {
     if (tempSettings) {
       console.log('Session found')
       const tempSettingsJSON = JSON.parse(tempSettings)
-      store.commit('setHost', tempSettingsJSON.host)
-      store.commit('setUser', {
+      store.set('host', tempSettingsJSON.host)
+      store.set('user', {
         id: tempSettingsJSON.user.id,
         name: tempSettingsJSON.user.name,
         token: tempSettingsJSON.user.token
@@ -37,7 +36,7 @@ export default class Auth {
     })
     if (res) {
       const cookie = {
-        host: store.state.host,
+        host: store.get('host'),
         user: {
           id: res.User.Id,
           name: res.User.Name,
@@ -46,9 +45,6 @@ export default class Auth {
       }
       Cookies.set('jellyfin-netcast', JSON.stringify(cookie), 30)
       addToken(res.Token)
-      Misc.sendProfile()
-      return true
     }
-    return false
   }
 }

@@ -2,6 +2,8 @@ import ShowError from '../helpers/ShowError'
 import store from '../store'
 import { device, appVersion } from '../common'
 
+// TODO, USE jellyfin-apiclient //
+
 console.log(`Running version: ${appVersion}`)
 const defaultParams = `Mediabrowser Client="Netcast", Device="${device.modelName}", DeviceId="${device.serialNumber}", Version="${appVersion}"`
 const customHeaders = {
@@ -16,7 +18,8 @@ const customHeaders = {
  * @param {string} data JSON-encoded data body (optional)
  */
 const requests = async (endpoint, type, data = null) => {
-  const url = store.state.host + endpoint
+  console.log(store.get('host'))
+  const url = store.get('host') + endpoint
   try {
     const res = await fetch(url, {
       method: type,

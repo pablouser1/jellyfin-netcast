@@ -1,25 +1,11 @@
-import { createStore } from 'vuex'
+import ClearX from 'clearx'
 
-// Create a new store instance.
-const store = createStore({
-  state () {
-    return {
-      host: '',
-      user: {
-        id: '',
-        name: '',
-        token: ''
-      }
-    }
-  },
-  mutations: {
-    setHost (state, host) {
-      state.host = host
-    },
-
-    setUser (state, user) {
-      state.user = user
-    }
+const store = new ClearX({
+  host: '',
+  user: {
+    id: '',
+    name: '',
+    token: ''
   }
 })
 
