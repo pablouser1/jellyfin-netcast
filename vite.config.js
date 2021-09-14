@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite'
+import { svelte } from '@sveltejs/vite-plugin-svelte'
 import legacy from '@vitejs/plugin-legacy'
-import preact from '@preact/preset-vite'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -10,6 +10,6 @@ export default defineConfig({
         'whatwg-fetch'
       ]
     }),
-    preact()
+    svelte()
   ]
 })

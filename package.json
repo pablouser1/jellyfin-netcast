@@ -3,28 +3,22 @@
   "version": "1.0.0",
   "license": "GPL-3.0-or-later",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "serve": "vite preview"
   },
-  "dependencies": {
-    "clearx": "^2.1.1",
-    "history": "^5.0.0",
-    "jellyfin-apiclient": "^1.8.0",
-    "linkstate": "^2.0.1",
-    "preact": "^10.5.13",
-    "preact-router": "^3.2.1",
-    "redux-zero": "^5.1.7",
-    "whatwg-fetch": "^3.6.2"
-  },
   "devDependencies": {
-    "@preact/preset-vite": "^2.0.0",
-    "@vitejs/plugin-legacy": "^1.3.4",
-    "eslint": "^7.26.0",
-    "eslint-config-preact": "^1.1.4",
-    "postcss-preset-env": "^6.7.0",
-    "sass": "^1.32.12",
-    "vite": "^2.2.3"
+    "@sveltejs/vite-plugin-svelte": "^1.0.0-next.11",
+    "@vitejs/plugin-legacy": "^1.5.3",
+    "svelte": "^3.37.0",
+    "vite": "^2.5.4"
+  },
+  "dependencies": {
+    "qs": "^6.10.1",
+    "spatial-navigation-js": "^1.0.0",
+    "svelte-spa-router": "^3.2.0",
+    "whatwg-fetch": "^3.6.2"
   }
 }
