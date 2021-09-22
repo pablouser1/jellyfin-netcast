@@ -1,5 +1,5 @@
 import device from "./device"
-import Player from './helpers/Player'
+import { push } from "svelte-spa-router"
 
 export default class JellySocket {
   socket = null
@@ -13,7 +13,7 @@ export default class JellySocket {
     this.socket = new WebSocket(
       `${host}/socket?api_key=${api_key}&deviceId=${device.serialNumber}`
     )
-    this.socket.onmessage = (event) => this.on(event)
+    this.socket.onmessage = (/** @type {{ data: string; }} */ event) => this.on(event)
   }
 
   /**
@@ -52,7 +52,9 @@ export default class JellySocket {
         // TODO
         break
       case "Play":
-        // TODO
+        // Run player
+        const data = message.Data
+        push(`/player/${data.ItemsIds[0]}?media=${data.MediaSourceId}&audio=${data.AudioStreamIndex}&subtitle=${data.SubtitleStreamIndex}&user_id=${data.ControllingUserId}`)
         break
       case "Playstate":
         // TODO

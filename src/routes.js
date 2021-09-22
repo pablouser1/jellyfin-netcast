@@ -8,8 +8,17 @@ const routes = {
   '/login': wrap({
     asyncComponent: () => import('./views/Login.svelte')
   }),
-  '/remote': wrap({
-    asyncComponent: () => import('./views/Remote.svelte')
+  '/movies/:id': wrap({
+    asyncComponent: () => import('./views/Movies.svelte')
+  }),
+  '/tvshows/:id': wrap({
+    asyncComponent: () => import('./views/TVShows.svelte')
+  }),
+  '/seasons/:id': wrap({
+    asyncComponent: () => import('./views/Seasons.svelte')
+  }),
+  '/episodes/:id': wrap({
+    asyncComponent: () => import('./views/Episodes.svelte')
   }),
   '/player/:id': Player
 }

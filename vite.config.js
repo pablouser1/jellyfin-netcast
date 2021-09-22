@@ -7,7 +7,7 @@ export default defineConfig({
   plugins: [
     legacy({
       additionalLegacyPolyfills: [
-        'whatwg-fetch'
+        'whatwg-fetch', 'intersection-observer'
       ]
     }),
     svelte()

@@ -1,7 +1,7 @@
 import { api, ws } from './common'
 import { user } from './store'
 import Cookies from './helpers/Cookies'
-import DEVICE_CAPABILITIES from './helpers/deviceprofile'
+import DEVICE_CAPABILITIES from './helpers/DeviceProfile'
 
 export default class Session {
   static check() {

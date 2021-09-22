@@ -4,7 +4,7 @@ body {
   margin: 0px;
 }
 
-section {
+.tab {
   padding: 3rem 1.5rem;
 }
 
@@ -37,6 +37,7 @@ section {
   font-size: 22px;
   color: #fff;
   padding: 10px 10px 10px 10px;
+  text-decoration: none;
 }
 
 .nav > .nav-links {
