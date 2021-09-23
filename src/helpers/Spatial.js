@@ -14,4 +14,11 @@ export default class SpatialNav {
       SpatialNavigation.focus('.focusable')
     }
   }
+
+  /**
+   * @param {string} direction
+   */
+  static move(direction) {
+    SpatialNavigation.move(direction)
+  }
 }

@@ -1,6 +1,7 @@
 // Handles player state
 import device from '../device'
 import { api } from '../common'
+import { pop } from 'svelte-spa-router'
 
 export default class Player {
   // Item Id
@@ -24,10 +25,7 @@ export default class Player {
 
   video = null
 
-  intervals = {
-    progress: 0,
-    scrollbar: 0
-  }
+  progress = 0
 
   getVideo () {
     return document.getElementById("video")
@@ -39,6 +37,22 @@ export default class Player {
 
   notifyStop () {
     api.stopping(this.state)
+  }
+
+  /**
+   * @param {string} reason
+   */
+  notifyProgress (reason) {
+    const state = this.state
+    state.EventName = reason
+    if (this.video.speed === 0) {
+      state.IsPaused = true
+    }
+    // Convert from ms to ticks
+    const current_ticks = this.video.playPosition * 1e4
+    // Set
+    state.PositionTicks = current_ticks
+    api.progress(state)
   }
 
   processPlayState() {
@@ -73,10 +87,12 @@ export default class Player {
     // Direct stream
     else if (mediaSource.SupportsDirectStream) {
       // TODO
+      this.method = "DirectStream"
+      this.url = `${api.host}/Videos/${this.id}/stream.${mediaSource.Container}?static=true&mediaSourceId=${this.source_id}&deviceId=${device.serialNumber}&api_key=${api.token}&Tag=${mediaSource.ETag}`
     }
     // Transcoding
     else {
-      this.method = "Transcode";
+      this.method = "Transcode"
       this.url = api.host + mediaSource.TranscodingUrl
     }
 
@@ -92,13 +108,37 @@ export default class Player {
     this.video.play()
     // Setup intervals
     this.video.onPlayStateChange = () => this.processPlayState
-    // this.intervals.scrollbar = window.setInterval(() => this.updateProgressBar, 5000);
-    // this.intervals.progress = window.setInterval(() => this.notifyProgress("TimeUpdate"), 10000)
+    this.progress = window.setInterval(() => this.notifyProgress("TimeUpdate"), 10000)
+  }
+
+  togglePlayPause () {
+    // 1: Is playing, 2: Is paused, 3: Connecting, 4: Buffering, 5: Finished, 6: Error
+    if (this.video.playState === 1) {
+      this.video.pause();
+      this.notifyProgress("pause")
+    }
+    else if (this.video.playState === 2) {
+      this.video.play();
+      this.notifyProgress("unpause")
+    }
+  }
+
+  seek () {
+    this.video.seek()
+  }
+
+  isPaused () {
+    if (this.video && this.video.playState === 2) {
+      return true
+    }
+    return false
   }
 
   stop () {
     this.notifyStop()
     this.video.onPlayStateChange = undefined
+    window.clearInterval(this.progress)
     this.video.stop()
+    pop()
   }
 }

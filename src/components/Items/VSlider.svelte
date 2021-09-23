@@ -14,23 +14,27 @@
 </div>
 
 <style>
-  .vertical-container {
+.vertical-container {
     display: -webkit-box;
     display: flex;
     flex-wrap: wrap;
-    -webkit-box-pack: space-evenly;
-    justify-content: space-evenly;
   }
 
   .item {
-    -webkit-box-flex: 0;
+    -webkit-flex: 0 1 auto;
     flex: 0 1 auto;
     opacity: 1;
     cursor: pointer;
+    padding: 10px 10px 10px 10px;
   }
 
   .item img {
-    max-width: 100%;
+    height: 341.183px;
+    width: 218.433px;
+  }
+
+  .item p {
+    width: 218.433px;
   }
 
   /* Effects */

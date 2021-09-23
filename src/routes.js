@@ -20,6 +20,9 @@ const routes = {
   '/episodes/:id': wrap({
     asyncComponent: () => import('./views/Episodes.svelte')
   }),
+  '/details/:id': wrap({
+    asyncComponent: () => import('./views/Details.svelte')
+  }),
   '/player/:id': Player
 }
 

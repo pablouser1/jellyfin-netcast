@@ -184,6 +184,15 @@ export default class Api {
   }
 
   /**
+   * @param {string} id
+   * @param {string} user_id
+   */
+  async item (id, user_id) {
+    const res = await this._req(`/Users/${user_id}/Items/${id}`)
+    return res
+  }
+
+  /**
    * @param {string} item_id
    * @param {string} mediasource_id
    * @param {number} audio
@@ -192,7 +201,7 @@ export default class Api {
    */
   async PlaybackInfo (item_id, mediasource_id, audio, subtitle, user_id) {
     const res = await this._req(
-      `/Items/${item_id}/PlaybackInfo?UserId=${user_id}/MediaSourceId=${mediasource_id}&IsPlayback=true&AutoOpenLiveStream=true&AudioStreamIndex=${audio}&SubtitleStreamIndex=${subtitle}`,
+      `/Items/${item_id}/PlaybackInfo?UserId=${user_id}&MediaSourceId=${mediasource_id}&IsPlayback=true&AutoOpenLiveStream=true&AudioStreamIndex=${audio}&SubtitleStreamIndex=${subtitle}`,
       "POST",
       DEVICE_PROFILE
     )
@@ -201,6 +210,10 @@ export default class Api {
 
   playing (state) {
     this._req('/Sessions/Playing', 'POST', state)
+  }
+
+  progress (state) {
+    this._req('/Sessions/Playing/Progress', 'POST', state)
   }
 
   stopping (state) {

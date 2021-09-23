@@ -1,6 +1,8 @@
 /**
  * @param {HTMLElement} node
  * @param {string} src
+ * @description Lazy load an image
+ * @author https://lwkchan.com/blog/lazy-loading-images-in-svelte-3/
  */
 function lazyLoad(node, src) {
   const observer = new IntersectionObserver(onIntersect, {
